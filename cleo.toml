@@ -1,0 +1,161 @@
+# Cleo Daily — the whole publication in one file.
+# The Editor's doctrine (1:10 selection, dense wide-angle perspective) lives in
+# the main prompt: cleo/skill/cleo-editor.md. This file is the machine-readable
+# half: who it's for, what to pull, how it looks, where it ships.
+
+[publication]
+name      = "Cleo Daily"
+subtitle  = "Field notes for people who build products"
+cadence   = "daily"                 # cron: 0 6 * * *
+locale    = "en"
+page      = "11in x 8.5in"          # landscape letter
+
+# WHO this is for. The Editor reads this verbatim, on top of the doctrine.
+[persona]
+reader = """
+A product manager drowning in feeds, tabs and Slack who has decided to get
+their information from paper instead. Wants signal, not scroll; a dense,
+wide-angle read once a day, then to put the phone down.
+"""
+voice  = "Plain, confident, a little wry. Short sentences. No hype, no filler."
+filter = """
+Read hundreds, keep a tenth. Selectivity is the product. Cut anything a smart
+reader could skip without regret. Every issue must span at least four lenses
+and feature at least one piece from outside tech. Honesty over filling.
+"""
+selection_ratio = 0.10              # keep ≤ ~1 in 10 of everything scanned
+target_features = 14                # strongest items that actually make the page
+
+[theme]
+name        = "broadsheet-mono"
+accent      = "#16605A"             # single restrained ink
+background  = "white"               # ink-tank friendly: pure white ground
+images      = "minimal"             # minimal | rich | none
+ink_budget  = "low"                 # nudge renderer toward line-art over fills
+
+[images]
+provider      = "none"              # set to "gemini" + a key to enable
+api_key       = "env:GEMINI_API_KEY"
+style         = "single-ink line illustration, white background, no gradients, editorial"
+max_per_issue = 2
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SOURCES — a deliberately WIDE net, grouped by lens so the 1:10 cut has range.
+# Each block names an MCP server (defined in .mcp.json) + the tool/args to pull.
+# The `rss` server auto-discovers + validates feed URLs; adjust freely.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[[sources]]
+beat   = "strategy"                 # the "why"
+server = "rss"
+tool   = "fetch_feeds"
+weight = "lead"
+args.since = "2d"
+args.feeds = [
+  "https://stratechery.com/feed/",
+  "https://www.platformer.news/rss/",
+  "https://www.ben-evans.com/benedictevans?format=rss",
+  "https://www.notboring.co/feed",
+  "https://www.exponentialview.co/feed",
+  "https://a16z.com/feed/",
+]
+
+[[sources]]
+beat   = "product"                  # the "how"
+server = "rss"
+tool   = "fetch_feeds"
+weight = "standard"
+args.since = "2d"
+args.feeds = [
+  "https://www.lennysnewsletter.com/feed",
+  "https://www.svpg.com/articles/feed/",
+  "https://www.mindtheproduct.com/feed/",
+]
+
+[[sources]]
+beat   = "ai-eng"                   # the "what's coming"
+server = "rss"
+tool   = "fetch_feeds"
+weight = "standard"
+args.since = "2d"
+args.feeds = [
+  "https://jack-clark.net/feed/",
+  "https://www.oneusefulthing.org/feed",
+  "https://simonwillison.net/atom/everything/",
+  "https://newsletter.pragmaticengineer.com/feed",
+  "https://www.technologyreview.com/feed/",
+]
+
+[[sources]]
+beat   = "wide-angle"               # "meanwhile, in the rest of the world"
+server = "rss"
+tool   = "fetch_feeds"
+weight = "standard"                 # protected: feeds the non-tech mandate
+args.since = "3d"
+args.feeds = [
+  "https://marginalrevolution.com/feed",
+  "https://www.noahpinion.blog/feed",
+  "https://www.slowboring.com/feed",
+  "https://www.astralcodexten.com/feed",
+  "https://www.worksinprogress.news/feed",
+  "https://www.construction-physics.com/feed",
+]
+
+[[sources]]
+beat   = "wire"                     # breadth & breaking
+server = "rss"
+tool   = "fetch_feeds"
+weight = "margin"
+args.since = "1d"
+args.feeds = [
+  "https://hnrss.org/frontpage?points=150",
+  "https://www.theverge.com/rss/index.xml",
+  "https://feeds.arstechnica.com/arstechnica/index",
+]
+
+[[sources]]
+beat   = "curiosity"                # the Margin's wide-angle payload
+server = "rss"
+tool   = "fetch_feeds"
+weight = "margin"
+args.since = "4d"
+args.feeds = [
+  "https://www.quantamagazine.org/feed/",
+  "https://www.smithsonianmag.com/rss/latest_articles/",
+  "https://aeon.co/feed.rss",
+]
+
+# The reader's OWN lenses — weighted, never crowded out. Enable when configured.
+[[sources]]
+beat    = "inbox"
+server  = "gmail"
+tool    = "search"
+enabled = false                     # flip on after connecting the gmail MCP
+args.query = "label:newsletters newer_than:2d"   # e.g. Money Stuff, private subs
+
+[[sources]]
+beat    = "signals"
+server  = "x"
+tool    = "home_timeline"
+enabled = false                     # flip on after adding Twitter/X creds
+args.lists = ["pm-thinkers"]
+args.limit = 40
+
+[[sources]]
+beat    = "personal"
+server  = "calendar"
+tool    = "upcoming"
+enabled = false
+args.days = 3
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PUBLISH — zero or more targets, run in order.
+# ─────────────────────────────────────────────────────────────────────────────
+[[publish]]
+type = "file"
+path = "editions/"
+
+# [[publish]]
+# type = "email"
+# server = "resend"
+# to = ["env:SUBSCRIBERS"]

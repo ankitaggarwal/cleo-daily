@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CLEO DAILY — No.1 — 4 June 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#17140F;--ink2:#403a32;--mut:#8c857b;--acc:#16605A;--acc2:#0d3d39;--rule:#e4e0d8;--rule2:#cdc8bd;--paper:#FFFFFF;--tint:#f6f4ef;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:#d6d3cc;color:var(--ink);-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision;}
+  @page{size:11in 8.5in;margin:0;}
+  .page{width:11in;height:8.5in;background:var(--paper);position:relative;overflow:hidden;page-break-after:always;padding:.46in .55in .4in;display:flex;flex-direction:column;font-family:'Source Serif 4',Georgia,serif;margin:0 auto;}
+  .page:last-child{page-break-after:avoid;}
+  @media screen{.page{margin:20px auto;box-shadow:0 8px 34px rgba(0,0,0,.17);}}
+  h1,h2,h3,h4,.bal{text-wrap:balance;hyphens:none;}
+  p,.pretty{text-wrap:pretty;}
+  .rhead{flex:0 0 auto;display:flex;justify-content:space-between;align-items:baseline;font-family:'Inter',sans-serif;font-size:7.2pt;letter-spacing:.11em;text-transform:uppercase;color:var(--mut);padding-bottom:.06in;border-bottom:1px solid var(--rule);}
+  .rhead .mid{color:var(--ink);font-weight:600;letter-spacing:.18em;}
+  .rhead .pg{color:var(--acc);font-weight:700;letter-spacing:.06em;}
+  .pmain{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;padding-top:.17in;overflow:hidden;}
+  .pfoot{flex:0 0 auto;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;font-size:6.5pt;letter-spacing:.09em;text-transform:uppercase;color:var(--mut);padding-top:.07in;border-top:1px solid var(--rule);margin-top:.1in;}
+  .kick{font-family:'Inter',sans-serif;font-size:7.4pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);}
+  .sec-h{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1.5px solid var(--ink);padding-bottom:.09in;flex:0 0 auto;}
+  .sec-h .tab{font-family:'Fraunces',serif;font-weight:600;font-size:21pt;letter-spacing:-.012em;line-height:.95;}
+  .sec-h .tab .no{color:var(--acc);font-size:12pt;vertical-align:.18em;margin-right:.07in;}
+  .sec-h .meta{font-family:'Inter',sans-serif;font-size:7pt;letter-spacing:.13em;text-transform:uppercase;color:var(--mut);text-align:right;font-weight:600;line-height:1.55;}
+  .drop::first-letter{font-family:'Fraunces',serif;font-weight:600;font-size:35pt;line-height:.72;float:left;margin:.04in .1in .02in 0;color:var(--acc);}
+  /* COVER */
+  .cover{padding:.52in .62in .42in;justify-content:space-between;}
+  .cov-top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--ink);padding-bottom:.1in;}
+  .cov-top .l{font-family:'Inter',sans-serif;font-size:7.6pt;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);}
+  .cov-top .l b{color:var(--acc);}
+  .cov-top .r{font-family:'Inter',sans-serif;font-size:7.6pt;letter-spacing:.17em;text-transform:uppercase;color:var(--ink);text-align:right;line-height:1.5;}
+  .masthead{font-family:'Fraunces',serif;font-weight:600;font-size:132pt;line-height:.78;letter-spacing:-.025em;margin:.13in 0 .06in;}
+  .md-daily{font-family:'Inter',sans-serif;font-size:11.5pt;font-weight:700;letter-spacing:.58em;text-transform:uppercase;color:var(--acc);margin:.03in 0 .13in;padding-left:.05in;}
+  .cov-tag{font-family:'Source Serif 4',serif;font-style:italic;font-size:14pt;color:var(--ink2);}
+  .cov-mark{position:absolute;right:.66in;top:1.55in;width:2.1in;height:2.1in;opacity:.9;}
+  .cov-weather{display:grid;grid-template-columns:.9in 1fr;gap:.26in;align-items:start;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);padding:.14in 0;}
+  .cov-weather .wl{font-family:'Inter',sans-serif;font-size:7pt;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--acc);white-space:nowrap;padding-top:.03in;}
+  .cov-weather .wt{font-family:'Fraunces',serif;font-weight:500;font-style:italic;font-size:14.5pt;line-height:1.34;color:var(--ink);max-width:8.4in;}
+  .cov-index .ix-h{font-family:'Inter',sans-serif;font-size:7pt;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--acc);margin-bottom:.02in;display:flex;justify-content:space-between;}
+  .cov-index .ix-h span{color:var(--mut);}
+  .cix-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 .42in;}
+  .cix{display:grid;grid-template-columns:.34in 1fr;gap:.13in;align-items:baseline;padding:.056in 0;border-bottom:1px solid var(--rule);}
+  .cix .f{font-family:'Fraunces',serif;font-weight:700;font-size:10pt;color:var(--acc);}
+  .cix .n{font-family:'Fraunces',serif;font-weight:600;font-size:10pt;line-height:1.03;}
+  .cix .n s{font-family:'Inter',sans-serif;font-size:7.2pt;font-weight:400;color:var(--mut);display:block;margin-top:.025in;letter-spacing:.01em;text-decoration:none;}
+  /* FEATURE (one-thing / deep dive / spotlight) */
+  .ot-head{font-family:'Fraunces',serif;font-weight:600;font-size:39pt;line-height:1.0;letter-spacing:-.022em;margin:.12in 0 .1in;max-width:9.2in;}
+  .ot-dek{font-family:'Source Serif 4',serif;font-style:italic;font-size:13.5pt;line-height:1.46;color:var(--ink2);max-width:8.4in;}
+  .ot-grid{flex:1;display:grid;grid-template-columns:1.55fr .9fr;gap:.46in;min-height:0;margin-top:.18in;padding-top:.16in;border-top:1px solid var(--rule);overflow:hidden;align-content:start;}
+  .ot-body{font-family:'Source Serif 4',serif;font-size:10.6pt;line-height:1.62;color:var(--ink);column-count:2;column-gap:.36in;}
+  .ot-body p{margin-bottom:.09in;}
+  .ot-side{display:flex;flex-direction:column;border-left:1px solid var(--rule);padding-left:.32in;}
+  .ot-so{background:var(--tint);border-left:2.5px solid var(--acc);padding:.16in .2in;margin-bottom:.2in;}
+  .ot-so .l{font-family:'Inter',sans-serif;font-size:7pt;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--acc);}
+  .ot-so .t{font-family:'Fraunces',serif;font-weight:500;font-size:12.5pt;line-height:1.34;margin-top:.06in;color:var(--ink);}
+  .ot-pq{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:17pt;line-height:1.3;color:var(--acc);margin-top:auto;}
+  .ot-src{font-family:'Inter',sans-serif;font-size:7pt;letter-spacing:.05em;color:var(--mut);margin-top:.16in;padding-top:.08in;border-top:1px solid var(--rule);line-height:1.5;}
+  .ot-src b{color:var(--ink);}
+  /* BRIEF */
+  .brief-wrap{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:0 .5in;min-height:0;margin-top:.18in;}
+  .bi{display:grid;grid-template-columns:.6in 1fr;gap:.18in;padding:.135in 0;border-bottom:1px solid var(--rule);}
+  .bi:nth-child(1),.bi:nth-child(2){border-top:1px solid var(--rule);}
+  .verdict{font-family:'Inter',sans-serif;font-size:6.6pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-align:center;padding:.05in .02in;height:fit-content;align-self:start;margin-top:.02in;border:1px solid var(--acc);color:var(--acc);border-radius:2px;}
+  .verdict.skip{border-color:var(--mut);color:var(--mut);}
+  .verdict.read{background:var(--acc);color:#fff;border-color:var(--acc);}
+  .bi .h{font-family:'Fraunces',serif;font-weight:600;font-size:12.5pt;line-height:1.12;letter-spacing:-.012em;}
+  .bi .s{font-family:'Source Serif 4',serif;font-size:9pt;line-height:1.4;color:var(--ink2);margin-top:.05in;}
+  .bi .src{font-family:'Inter',sans-serif;font-size:6.6pt;letter-spacing:.04em;text-transform:uppercase;color:var(--mut);margin-top:.05in;}
+  .bi .src::before{content:"▸ ";color:var(--acc);}
+  .cut{grid-column:1 / -1;display:flex;gap:.2in;align-items:baseline;margin-top:.12in;padding-top:.12in;border-top:1.5px solid var(--ink);}
+  .cut .l{font-family:'Inter',sans-serif;font-size:7pt;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--acc);white-space:nowrap;}
+  .cut .t{font-family:'Source Serif 4',serif;font-style:italic;font-size:9.4pt;line-height:1.4;color:var(--ink2);}
+  /* HN */
+  .hn-intro{font-family:'Source Serif 4',serif;font-style:italic;font-size:11pt;line-height:1.46;color:var(--ink2);margin:.15in 0 .02in;max-width:9.2in;}
+  .hn-list{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:0 .5in;min-height:0;margin-top:.06in;align-content:space-between;}
+  .hn-row{display:grid;grid-template-columns:.32in 1fr;gap:.15in;padding:.105in 0;border-bottom:1px solid var(--rule);}
+  .hn-row:nth-child(1),.hn-row:nth-child(2){border-top:1px solid var(--rule);}
+  .hn-rank{font-family:'Fraunces',serif;font-weight:700;font-size:13pt;color:var(--acc);line-height:1;}
+  .hn-rank::before{content:"▲";display:block;font-size:6pt;color:var(--acc);margin-bottom:.015in;opacity:.85;}
+  .hn-title{font-family:'Fraunces',serif;font-weight:600;font-size:11.5pt;line-height:1.12;letter-spacing:-.01em;}
+  .hn-meta{font-family:'Inter',sans-serif;font-size:6.3pt;letter-spacing:.05em;text-transform:uppercase;color:var(--mut);margin:.045in 0;display:flex;gap:.1in;align-items:center;flex-wrap:wrap;}
+  .hn-dom{color:var(--ink);font-weight:600;}
+  .hn-vd{color:var(--acc);font-weight:700;border:1px solid var(--rule2);border-radius:2px;padding:.005in .05in;}
+  .hn-vd.skip{color:var(--mut);}
+  .hn-take{font-family:'Source Serif 4',serif;font-size:8.4pt;line-height:1.4;color:var(--ink2);}
+  /* SIGNALS */
+  .sig-grid{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 .42in;min-height:0;margin-top:.18in;align-content:start;}
+  .sigi{padding:.12in 0 .12in .2in;border-bottom:1px solid var(--rule);position:relative;}
+  .sigi::before{content:"";position:absolute;left:0;top:.175in;width:.07in;height:.07in;border-radius:50%;background:var(--acc);}
+  .sigi .t{font-family:'Source Serif 4',serif;font-size:9.6pt;line-height:1.4;color:var(--ink);}
+  .sigi .s{font-family:'Inter',sans-serif;font-size:6.2pt;letter-spacing:.05em;text-transform:uppercase;color:var(--mut);margin-top:.04in;}
+  .sig-strip{flex:0 0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:.3in;margin-top:.14in;padding-top:.12in;border-top:1.5px solid var(--ink);}
+  .sig-strip .nb .v{font-family:'Fraunces',serif;font-weight:700;font-size:15pt;color:var(--acc);line-height:.9;}
+  .sig-strip .nb .l{font-family:'Inter',sans-serif;font-size:7pt;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin-top:.05in;line-height:1.25;}
+  /* CONVERSATION */
+  .conv-intro{font-family:'Source Serif 4',serif;font-style:italic;font-size:11pt;line-height:1.46;color:var(--ink2);margin:.15in 0 0;max-width:9in;}
+  .conv-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:.26in .5in;min-height:0;margin-top:.14in;align-content:space-between;}
+  .conv{border-top:2px solid var(--acc);padding-top:.1in;}
+  .conv .who{font-family:'Fraunces',serif;font-weight:600;font-size:13pt;line-height:1;}
+  .conv .src{font-family:'Inter',sans-serif;font-size:6.3pt;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);margin:.03in 0 .07in;}
+  .conv .claim{font-family:'Source Serif 4',serif;font-size:9.7pt;line-height:1.48;color:var(--ink);}
+  .conv .cleo{font-family:'Source Serif 4',serif;font-style:italic;font-size:9pt;line-height:1.38;color:var(--acc);margin-top:.07in;padding-top:.06in;border-top:1px dotted var(--rule2);}
+  .conv .cleo b{font-family:'Inter',sans-serif;font-style:normal;font-size:6pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-right:.04in;}
+  /* feature shared */
+  .dd-head{font-family:'Fraunces',serif;font-weight:600;font-size:34pt;line-height:1.0;letter-spacing:-.022em;margin:.1in 0 .09in;max-width:9in;}
+  .dd-dek{font-family:'Source Serif 4',serif;font-style:italic;font-size:12.5pt;line-height:1.42;color:var(--ink2);max-width:8.6in;}
+  .dd-grid{flex:1;display:grid;grid-template-columns:1.05fr 1.05fr .82fr;gap:.4in;min-height:0;margin-top:.18in;padding-top:.16in;border-top:1px solid var(--rule);overflow:hidden;}
+  .dd-body{grid-column:1 / 3;font-family:'Source Serif 4',serif;font-size:10.8pt;line-height:1.66;color:var(--ink);column-count:2;column-gap:.4in;}
+  .dd-body p{margin-bottom:.09in;}
+  .dd-side{border-left:1px solid var(--rule);padding-left:.32in;display:flex;flex-direction:column;}
+  .dd-side .pq{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:17pt;line-height:1.3;color:var(--acc);margin-bottom:.16in;}
+  .mini-h{font-family:'Inter',sans-serif;font-size:7pt;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--ink);margin-bottom:.08in;padding-bottom:.05in;border-bottom:1px solid var(--ink);}
+  .ev{display:flex;gap:.13in;padding:.08in 0;border-bottom:1px solid var(--rule);font-family:'Source Serif 4',serif;font-size:9pt;line-height:1.36;color:var(--ink2);}
+  .ev b{font-family:'Fraunces',serif;color:var(--acc);font-size:10pt;flex:0 0 .26in;}
+  .dd-src{font-family:'Inter',sans-serif;font-size:6.6pt;letter-spacing:.04em;color:var(--mut);margin-top:auto;padding-top:.1in;line-height:1.5;}
+  .layers{display:flex;flex-direction:column;gap:.04in;margin:.06in 0 .14in;}
+  .layer{display:flex;justify-content:space-between;font-family:'Inter',sans-serif;font-size:7.4pt;letter-spacing:.02em;padding:.055in .08in;border:1px solid var(--rule);color:var(--ink2);}
+  .layer.hot{border-color:var(--acc);color:var(--acc);font-weight:700;background:var(--tint);}
+  .layer span{color:var(--mut);font-size:6.3pt;letter-spacing:.05em;text-transform:uppercase;}
+  /* SPLIT (evidence/metric) */
+  .split{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:0;margin-top:.18in;}
+  .split>.col:first-child{border-right:1px solid var(--rule);padding-right:.48in;}
+  .split>.col:last-child{padding-left:.48in;}
+  .col{display:flex;flex-direction:column;min-height:0;}
+  .col-fill{justify-content:space-between;}
+  .col-h{font-family:'Fraunces',serif;font-weight:600;font-size:16pt;letter-spacing:-.012em;border-bottom:1.5px solid var(--ink);padding-bottom:.07in;margin-bottom:.1in;display:flex;justify-content:space-between;align-items:baseline;}
+  .col-h .k{font-family:'Inter',sans-serif;font-size:6.8pt;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--acc);}
+  .stat-cap{font-family:'Source Serif 4',serif;font-size:9.4pt;line-height:1.44;color:var(--ink2);margin:.02in 0 .14in;}
+  .numgrid{display:grid;grid-template-columns:1fr 1fr;gap:.18in .34in;}
+  .ng{border-top:2px solid var(--acc);padding-top:.09in;}
+  .ng .n{font-family:'Fraunces',serif;font-weight:700;font-size:29pt;line-height:.86;color:var(--acc);letter-spacing:-.02em;}
+  .ng .c{font-family:'Source Serif 4',serif;font-size:8.6pt;line-height:1.34;color:var(--ink2);margin-top:.06in;}
+  .ng .src{font-family:'Inter',sans-serif;font-size:6.1pt;letter-spacing:.04em;text-transform:uppercase;color:var(--mut);margin-top:.05in;}
+  .chart-note{font-family:'Inter',sans-serif;font-size:6.6pt;letter-spacing:.04em;color:var(--mut);margin-top:.16in;text-transform:uppercase;}
+  .deb-q{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:13pt;line-height:1.34;color:var(--ink);margin-bottom:.12in;}
+  .side{padding:.1in 0;border-top:1px solid var(--rule);}
+  .side .tag{font-family:'Inter',sans-serif;font-size:7pt;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);}
+  .side .pos{font-family:'Fraunces',serif;font-weight:600;font-size:11.5pt;line-height:1.2;margin:.04in 0 .05in;}
+  .side .arg{font-family:'Source Serif 4',serif;font-size:9pt;line-height:1.44;color:var(--ink2);}
+  .side .who{font-family:'Inter',sans-serif;font-size:6.6pt;letter-spacing:.04em;text-transform:uppercase;color:var(--mut);margin-top:.05in;}
+  .deb-mid{font-family:'Source Serif 4',serif;font-style:italic;font-size:9.2pt;line-height:1.4;color:var(--ink);margin-top:.12in;padding-top:.1in;border-top:1.5px solid var(--ink);}
+  /* FRAMEWORK + TEARDOWN + STACK */
+  .fw-explain{font-family:'Source Serif 4',serif;font-size:9.6pt;line-height:1.5;color:var(--ink);margin:.04in 0 .1in;}
+  .fw-diagram{width:100%;margin:.02in 0 .1in;}
+  .apply{background:var(--tint);border-left:2.5px solid var(--acc);padding:.13in .18in;}
+  .apply .l{font-family:'Inter',sans-serif;font-size:6.8pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);}
+  .apply .t{font-family:'Source Serif 4',serif;font-size:9.4pt;line-height:1.46;margin-top:.05in;color:var(--ink);}
+  .td-sub{font-family:'Fraunces',serif;font-weight:600;font-size:12.5pt;line-height:1.16;margin-bottom:.04in;}
+  .td-what{font-family:'Source Serif 4',serif;font-size:9pt;line-height:1.42;color:var(--ink2);margin-bottom:.1in;}
+  .wells{counter-reset:w;}
+  .well{font-family:'Source Serif 4',serif;font-size:9pt;line-height:1.36;color:var(--ink);padding:.07in 0 .07in .26in;border-bottom:1px solid var(--rule);position:relative;}
+  .well::before{content:counter(w);counter-increment:w;font-family:'Fraunces',serif;font-weight:700;color:var(--acc);position:absolute;left:0;top:.07in;font-size:9.5pt;}
+  .steal{margin-top:.1in;border-top:1.5px solid var(--ink);padding-top:.09in;}
+  .steal .l{font-family:'Inter',sans-serif;font-size:6.8pt;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);}
+  .steal .t{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:11.5pt;line-height:1.32;margin-top:.04in;}
+  .stack-grid{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:0 .5in;min-height:0;margin-top:.18in;align-content:space-between;}
+  .stk{padding:.12in 0;border-bottom:1px solid var(--rule);}
+  .stk:nth-child(1),.stk:nth-child(2){border-top:1px solid var(--rule);}
+  .stk .h{font-family:'Fraunces',serif;font-weight:600;font-size:12.5pt;line-height:1.1;display:flex;justify-content:space-between;align-items:baseline;gap:.12in;}
+  .stk .h .tag{font-family:'Inter',sans-serif;font-size:6pt;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--acc);border:1px solid var(--rule2);border-radius:2px;padding:.01in .05in;white-space:nowrap;}
+  .stk .w{font-family:'Source Serif 4',serif;font-size:9.3pt;line-height:1.44;color:var(--ink2);margin-top:.05in;}
+  .stk .src{font-family:'Inter',sans-serif;font-size:6.3pt;letter-spacing:.04em;text-transform:uppercase;color:var(--mut);margin-top:.05in;}
+  /* SCIENCE + THEN */
+  .sci-grid{flex:1;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:.46in;min-height:0;margin-top:.18in;}
+  .sci-lead .h{font-family:'Fraunces',serif;font-weight:600;font-size:19pt;line-height:1.08;letter-spacing:-.01em;margin-bottom:.08in;}
+  .sci-lead .b{font-family:'Source Serif 4',serif;font-size:10.6pt;line-height:1.6;color:var(--ink2);}
+  .sci-lead .src{font-family:'Inter',sans-serif;font-size:6.2pt;letter-spacing:.05em;text-transform:uppercase;color:var(--mut);margin-top:.08in;}
+  .sci-fig{width:100%;margin-top:.2in;opacity:.9;}
+  .mcol{display:flex;flex-direction:column;min-height:0;}
+  .mh{font-family:'Inter',sans-serif;font-size:7.2pt;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--acc);padding-bottom:.06in;border-bottom:1.5px solid var(--acc);margin-bottom:.1in;}
+  .mh:not(:first-child){margin-top:.18in;}
+  .wonder{padding:.07in 0;border-bottom:1px solid var(--rule);}
+  .wonder .h{font-family:'Fraunces',serif;font-weight:600;font-size:10.5pt;line-height:1.14;}
+  .wonder .s{font-family:'Source Serif 4',serif;font-size:8.8pt;line-height:1.42;color:var(--ink2);margin-top:.03in;}
+  .wonder .src{font-family:'Inter',sans-serif;font-size:6pt;letter-spacing:.04em;text-transform:uppercase;color:var(--mut);margin-top:.03in;}
+  /* ESSAY */
+  .lv-head{font-family:'Fraunces',serif;font-weight:600;font-size:37pt;line-height:1.0;letter-spacing:-.022em;margin:.1in 0 .09in;max-width:8.6in;}
+  .lv-dek{font-family:'Source Serif 4',serif;font-style:italic;font-size:12.5pt;line-height:1.44;color:var(--ink2);max-width:8.2in;}
+  .lv-grid{flex:1;display:grid;grid-template-columns:1.06fr 1.06fr .82fr;gap:.42in;min-height:0;margin-top:.16in;padding-top:.16in;border-top:1px solid var(--rule);overflow:hidden;}
+  .lv-body{grid-column:1 / 3;font-family:'Source Serif 4',serif;font-size:10.8pt;line-height:1.68;color:var(--ink);column-count:2;column-gap:.42in;}
+  .lv-body p{margin-bottom:.1in;}
+  .lv-side{border-left:1px solid var(--rule);padding-left:.32in;display:flex;flex-direction:column;justify-content:center;}
+  .lv-pq{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:19pt;line-height:1.32;color:var(--acc);}
+  .lv-pq-by{font-family:'Inter',sans-serif;font-size:6.8pt;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-top:.16in;}
+  /* MARGIN + DESK */
+  .margin-grid{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.46in;min-height:0;margin-top:.18in;}
+  .idea{font-family:'Source Serif 4',serif;font-size:9.7pt;line-height:1.54;color:var(--ink);}
+  .idea b{font-family:'Fraunces',serif;}
+  .quote-box{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:.13in 0;margin:.04in 0;}
+  .quote-box .q{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:14pt;line-height:1.36;color:var(--ink);}
+  .quote-box .by{font-family:'Inter',sans-serif;font-size:7pt;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--acc);margin-top:.08in;}
+  .joy{font-family:'Source Serif 4',serif;font-size:9.3pt;line-height:1.44;color:var(--ink);padding:.06in 0;border-bottom:1px dotted var(--rule);}
+  .joy b{font-family:'Inter',sans-serif;font-size:6.6pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);margin-right:.06in;}
+  .rec{padding:.06in 0;border-bottom:1px solid var(--rule);}
+  .rec .h{font-family:'Fraunces',serif;font-weight:600;font-size:10pt;line-height:1.16;}
+  .rec .h em{font-style:italic;}
+  .rec .w{font-family:'Source Serif 4',serif;font-size:8.6pt;line-height:1.4;color:var(--ink2);margin-top:.02in;}
+  .di{display:flex;gap:.14in;padding:.075in 0;border-bottom:1px solid var(--rule);font-family:'Source Serif 4',serif;font-size:9pt;line-height:1.38;color:var(--ink);}
+  .di .y{font-family:'Fraunces',serif;font-weight:700;color:var(--acc);font-size:10pt;flex:0 0 .42in;}
+  .wod{font-family:'Fraunces',serif;font-weight:600;font-size:15pt;color:var(--ink);}
+  .wod-pos{font-family:'Source Serif 4',serif;font-style:italic;font-size:8.4pt;color:var(--mut);margin:.02in 0 .06in;}
+  .wod-def{font-family:'Source Serif 4',serif;font-size:9.2pt;line-height:1.46;color:var(--ink2);}
+  .recipe-steps{font-family:'Source Serif 4',serif;font-size:9.2pt;line-height:1.48;color:var(--ink2);}
+  /* PUZZLES */
+  .puz-grid{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.46in;min-height:0;margin-top:.18in;}
+  .puz-h{font-family:'Fraunces',serif;font-weight:600;font-size:12.5pt;margin-bottom:.04in;}
+  .puz-d{font-family:'Source Serif 4',serif;font-size:8.4pt;line-height:1.36;color:var(--ink2);margin-bottom:.06in;}
+  .puz-d2{margin-top:.16in;}
+  .conn{display:grid;grid-template-columns:repeat(4,1fr);gap:.07in;margin:.06in 0;}
+  .conn .tile{border:1px solid var(--rule2);border-radius:3px;text-align:center;padding:.11in .03in;font-family:'Inter',sans-serif;font-size:6.7pt;font-weight:700;letter-spacing:.01em;color:var(--ink);text-transform:uppercase;line-height:1.05;display:flex;align-items:center;justify-content:center;min-height:.36in;}
+  .triv{font-family:'Source Serif 4',serif;font-size:9.1pt;line-height:1.44;color:var(--ink);counter-reset:t;}
+  .triv .q{padding:.055in 0;display:flex;gap:.1in;}
+  .triv .q::before{content:counter(t);counter-increment:t;font-family:'Fraunces',serif;font-weight:700;color:var(--acc);flex:0 0 .14in;}
+  .anag{font-family:'Inter',sans-serif;font-size:10pt;letter-spacing:.22em;color:var(--ink);padding:.07in 0;border-bottom:1px dotted var(--rule2);text-transform:uppercase;font-weight:600;}
+  .puz-key{font-family:'Inter',sans-serif;font-size:6pt;letter-spacing:.02em;color:var(--mut);line-height:1.55;margin-top:.06in;border-top:1px solid var(--rule);padding-top:.05in;}
+  .est{font-family:'Source Serif 4',serif;font-size:9.5pt;line-height:1.5;color:var(--ink);}
+  .sit{font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:12.5pt;line-height:1.34;color:var(--acc);margin-top:.06in;}
+  /* COLOPHON */
+  .colo{flex:1;display:grid;grid-template-columns:1.35fr .9fr;gap:.5in;min-height:0;margin-top:.18in;}
+  .colo-note{font-family:'Fraunces',serif;font-weight:500;font-size:13pt;line-height:1.5;color:var(--ink);}
+  .colo-note .drop::first-letter{font-size:40pt;}
+  .colo-sig{font-family:'Inter',sans-serif;font-size:8pt;font-weight:600;color:var(--acc);margin-top:.16in;}
+  .colo-sig span{display:block;color:var(--mut);font-weight:400;margin-top:.03in;}
+  .colo-side{border-left:1px solid var(--rule);padding-left:.34in;display:flex;flex-direction:column;}
+  .made{font-family:'Source Serif 4',serif;font-size:9pt;line-height:1.5;color:var(--ink2);}
+  .made .row{display:flex;justify-content:space-between;padding:.05in 0;border-bottom:1px solid var(--rule);}
+  .made .row .k{color:var(--mut);font-family:'Inter',sans-serif;font-size:7pt;letter-spacing:.06em;text-transform:uppercase;}
+  .made .row .v{font-family:'Fraunces',serif;font-weight:600;color:var(--ink);}
+  .ship{margin-top:.14in;}
+  .ship .si{font-family:'Inter',sans-serif;font-size:8.2pt;line-height:1.3;color:var(--ink);padding:.05in 0;border-bottom:1px solid var(--rule);display:flex;gap:.12in;}
+  .ship .si .t{color:var(--acc);font-weight:700;white-space:nowrap;}
+  .next{margin-top:auto;padding-top:.12in;border-top:1.5px solid var(--ink);}
+  .next .l{font-family:'Inter',sans-serif;font-size:6.8pt;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--acc);}
+  .next .t{font-family:'Source Serif 4',serif;font-style:italic;font-size:9.6pt;line-height:1.4;color:var(--ink2);margin-top:.04in;}
+</style>
+</head>
+<body>
+
+<!-- 1 COVER -->
+<section class="page cover">
+  <div>
+    <div class="cov-top">
+      <div class="l">A daily field brief · <b>Vol. I — No. 1</b></div>
+      <div class="r">Thursday, 4 June 2026<br>Twenty pages · front &amp; back</div>
+    </div>
+    <div class="masthead">Cleo</div>
+    <div class="md-daily">Daily</div>
+    <div class="cov-tag">Field notes for people who build products — filtered, so you can stop scrolling.</div>
+  </div>
+  <svg class="cov-mark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#16605A">
+    <g stroke-width="1" opacity="0.85"><line x1="20" y1="30" x2="120" y2="100"/><line x1="14" y1="70" x2="120" y2="100"/><line x1="14" y1="110" x2="120" y2="100"/><line x1="20" y1="150" x2="120" y2="100"/><line x1="40" y1="178" x2="120" y2="100"/><line x1="40" y1="22" x2="120" y2="100"/><line x1="8" y1="90" x2="120" y2="100"/><line x1="30" y1="165" x2="120" y2="100"/></g>
+    <circle cx="120" cy="100" r="40" stroke-width="1.4"/><circle cx="120" cy="100" r="26" stroke-width="1" opacity="0.5"/><circle cx="120" cy="100" r="7" fill="#16605A" stroke="none"/>
+  </svg>
+  <div class="cov-weather">
+    <div class="wl">Today,<br>in one line</div>
+    <div class="wt">Two questions are quietly reshaping how products get built: what to charge for AI — and where the power to run it comes from.</div>
+  </div>
+  <div class="cov-index">
+    <div class="ix-h"><span>In this issue</span><span>20 pp. · 6 lenses</span></div>
+    <div class="cix-grid">
+      <div class="cix"><div class="f">02</div><div class="n">The One Thing<s>Pay per token, not per seat</s></div></div>
+      <div class="cix"><div class="f">09</div><div class="n">Spotlight<s>The agent war moves to your devices</s></div></div>
+      <div class="cix"><div class="f">04</div><div class="n">From Hacker News<s>The orange site, read for you</s></div></div>
+      <div class="cix"><div class="f">11</div><div class="n">Craft<s>Price the verb, not the seat</s></div></div>
+      <div class="cix"><div class="f">05</div><div class="n">Signals<s>The world, in passing</s></div></div>
+      <div class="cix"><div class="f">14</div><div class="n">Science &amp; Wonder<s>An 80-year problem, cracked</s></div></div>
+      <div class="cix"><div class="f">06</div><div class="n">Deep Dive<s>The bottleneck is the grid</s></div></div>
+      <div class="cix"><div class="f">16</div><div class="n">The Long View<s>In defence of permanent doubt</s></div></div>
+      <div class="cix"><div class="f">07</div><div class="n">Evidence<s>The numbers &amp; the jobs debate</s></div></div>
+      <div class="cix"><div class="f">18</div><div class="n">Puzzles<s>Connections, trivia &amp; more</s></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 ONE THING -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">THE ONE THING</span><span class="pg">02</span></div>
+  <div class="pmain">
+    <div class="kick">If you read nothing else today</div>
+    <h1 class="ot-head">Pay per token, not per seat.</h1>
+    <p class="ot-dek">The story isn't only the AI bill — it's the pricing model behind it. Exponential View argues AI is sliding off flat per-seat subscriptions onto metered, pay-per-use pricing — the same trip the internet ad market made from CPM to cost-per-action. If you price anything, this is the quarter it reaches you.</p>
+    <div class="ot-grid">
+      <div class="ot-body drop">
+        <p>The logic is hard to argue with. Per-seat pricing made sense when a product's value tracked who had a login. AI's value tracks <em>work done</em> — tokens spent, tasks finished, agents run — and a flat seat can't see any of that. So the meter moves to the verb. Exponential View's framing this week: we're repeating the web's journey from bundled, flat fees to metered, performance-linked ones, only far faster.</p>
+        <p>Uber's new spending cap is the same coin's other face. When you meter usage, the bill becomes variable — and a variable bill needs a cap, or it terrifies the buyer. Uber's $1,500-a-month ceiling per engineer wasn't anti-AI; it was the guardrail that makes metered pricing survivable on the buyer's side.</p>
+        <p>For a product manager, three decisions just got promoted from billing footnotes to roadmap items: <em>the unit</em> (what verb do you meter?), <em>the meter</em> (can the customer see and trust it?), and <em>the guardrail</em> (what stops a runaway bill?). Get them wrong and even a beloved product churns on its invoice.</p>
+        <p>The opportunity is the mirror image: usage pricing aligns what you charge with the value you create, and it lets small customers start cheap and grow into big ones. The seat was a proxy. The token is the thing itself.</p>
+      </div>
+      <div class="ot-side">
+        <div class="ot-so">
+          <div class="l">So what — for you</div>
+          <div class="t">Pricing is product now. Before next planning, name the unit of value you'd meter, decide whether the customer can see it, and set the cap — before finance sets it for you.</div>
+        </div>
+        <div class="ot-pq">“The seat was always a proxy. The token is the thing itself.”</div>
+        <div class="ot-src">Compiled from <b>Exponential View</b> (3 Jun) &amp; <b>Simon Willison</b> on Uber's cap (3 Jun).</div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>≈ 90 weighed · 1 chosen to lead</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 3 BRIEF -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">THE BRIEF</span><span class="pg">03</span></div>
+  <div class="pmain">
+    <div class="sec-h"><div class="tab"><span class="no">§</span>The Brief</div><div class="meta">Six things worth your attention<br>The verdict tells you how much</div></div>
+    <div class="brief-wrap">
+      <div class="bi"><div class="verdict read">Read</div><div><div class="h">Google opens Gemma 4 12B — multimodal, encoder-free</div><div class="s">A unified model that handles text and images without a separate vision encoder, tuned for efficiency. Open weights at a size you can actually run — a real option for agentic and on-device work.</div><div class="src">Google · 3 Jun</div></div></div>
+      <div class="bi"><div class="verdict">Save</div><div><div class="h">Microsoft's Project Solara reframes the PC as an agent endpoint</div><div class="s">Stratechery's read: Solara points at devices as spokes to cloud agents, and suddenly Nvidia's shiny RTX “AI PC” looks like last era's idea. The fight over <em>where</em> AI runs is leaving the browser.</div><div class="src">Stratechery · 3 Jun</div></div></div>
+      <div class="bi"><div class="verdict read">Read</div><div><div class="h">Google is financing a virtual power plant for its data centres</div><div class="s">Via Voltus, a ~100MW programme pays homes and businesses to cut usage, freeing grid capacity on the US East Coast. The clearest sign yet that AI's real constraint is electricity.</div><div class="src">MIT Tech Review · 3 Jun</div></div></div>
+      <div class="bi"><div class="verdict read">Read</div><div><div class="h">An economist's case against the AI jobs-pocalypse</div><div class="s">Labour economist Kathryn Anne Edwards argues mass AI unemployment is unlikely; the real failure would be an inadequate safety net, not the robots. A useful corrective to the doom.</div><div class="src">Platformer · 3 Jun</div></div></div>
+      <div class="bi"><div class="verdict skip">Skim</div><div><div class="h">Let's Encrypt ships post-quantum certificates</div><div class="s">The slow migration to quantum-resistant crypto begins where most of the web's TLS does. Nothing to do today, but the clock you'll eventually run against just started.</div><div class="src">Let's Encrypt · 3 Jun</div></div></div>
+      <div class="bi"><div class="verdict skip">Skim</div><div><div class="h">Elixir 1.20 becomes a gradually typed language</div><div class="s">Opt-in type annotations, backward compatible — the pragmatic middle path between dynamic and static. Worth a look if you care where language design is heading.</div><div class="src">elixir-lang.org · 3 Jun</div></div></div>
+      <div class="cut"><div class="l">What I cut</div><div class="t">Three “Gemma 4 changes everything” threads, a fresh round of Opus-versus-Gemini benchmark theatre, and a 15-minute tutorial for making a talking deepfake of yourself — which, no.</div></div>
+    </div>
+  </div>
+  <div class="pfoot"><span>Read · Skim · Skip · Save</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 4 HACKER NEWS -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">FROM HACKER NEWS</span><span class="pg">04</span></div>
+  <div class="pmain">
+    <div class="sec-h"><div class="tab"><span class="no">▲</span>The Orange Site</div><div class="meta">Today's front page, read for you<br>Skip the comments</div></div>
+    <p class="hn-intro">What the people who actually build things argued about today — the front page, weighed and sorted, so you can leave the tab closed.</p>
+    <div class="hn-list">
+      <div class="hn-row"><div class="hn-rank">1</div><div><div class="hn-title">A post-quantum future for Let's Encrypt</div><div class="hn-meta"><span class="hn-dom">letsencrypt.org</span><span class="hn-vd">Read</span></div><div class="hn-take">The infrastructure that quietly secures most of the web is starting its quantum-resistant migration. The kind of plumbing change you want to read before it's urgent.</div></div></div>
+      <div class="hn-row"><div class="hn-rank">2</div><div><div class="hn-title">Gemma 4 12B — a unified, encoder-free multimodal model</div><div class="hn-meta"><span class="hn-dom">blog.google</span><span class="hn-vd">Read</span></div><div class="hn-take">One model, text and images, no separate vision encoder — and small enough to run. The open-weights option just got more serious.</div></div></div>
+      <div class="hn-row"><div class="hn-rank">3</div><div><div class="hn-title">Elixir v1.20: now a gradually typed language</div><div class="hn-meta"><span class="hn-dom">elixir-lang.org</span><span class="hn-vd">Save</span></div><div class="hn-take">Add types where you want them, keep dynamism where you don't. A grown-up answer to a decade-old language war.</div></div></div>
+      <div class="hn-row"><div class="hn-rank">4</div><div><div class="hn-title">Pwnd Blaster — hacking a PC through its own speaker</div><div class="hn-meta"><span class="hn-dom">blog.nns.ee</span><span class="hn-vd skip">Skim</span></div><div class="hn-take">A BadUSB-style attack carried over sound, no cable required. More elegant demo than live threat — but a lovely, alarming idea.</div></div></div>
+      <div class="hn-row"><div class="hn-rank">5</div><div><div class="hn-title">AI finds a clever solution to an 80-year-old Erdős problem</div><div class="hn-meta"><span class="hn-dom">smithsonianmag.com</span><span class="hn-vd skip">Skim</span></div><div class="hn-take">A model improved on a 1946 unit-distance puzzle mathematicians had circled for decades. “AI for science” with an actual result attached.</div></div></div>
+      <div class="hn-row"><div class="hn-rank">6</div><div><div class="hn-title">DaVinci Resolve 21</div><div class="hn-meta"><span class="hn-dom">blackmagicdesign.com</span><span class="hn-vd skip">Skim</span></div><div class="hn-take">The pro video suite with a genuinely capable free tier gets a major version. Filed under “tools that quietly out-spec their price.”</div></div></div>
+    </div>
+  </div>
+  <div class="pfoot"><span>Cleo reads HN so you can keep the tab closed</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 5 SIGNALS -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">SIGNALS</span><span class="pg">05</span></div>
+  <div class="pmain">
+    <div class="sec-h"><div class="tab"><span class="no">◴</span>Signals</div><div class="meta">The world, in passing<br>One line each — links inside</div></div>
+    <div class="sig-grid">
+      <div class="sigi"><div class="t">AI pricing is going metered — flat per-seat subscriptions out, pay-per-token in, fast.</div><div class="s">Exponential View</div></div>
+      <div class="sigi"><div class="t">Google is financing a ~100MW virtual power plant to free grid capacity for its data centres.</div><div class="s">MIT Tech Review</div></div>
+      <div class="sigi"><div class="t">Microsoft's Project Solara reframes the PC as an endpoint for cloud agents.</div><div class="s">Stratechery</div></div>
+      <div class="sigi"><div class="t">A labour economist argues the “AI jobs-pocalypse” is unlikely — the gap is the safety net.</div><div class="s">Platformer</div></div>
+      <div class="sigi"><div class="t">US autism-therapy headcount went from 150k to 654k in six years — a labour story hiding in plain sight.</div><div class="s">Marginal Revolution</div></div>
+      <div class="sigi"><div class="t">The US housing-finance regulator was also made acting intelligence chief.</div><div class="s">Slow Boring</div></div>
+      <div class="sigi"><div class="t">Google wants EPA approval to release 32 million sterilised mosquitoes in California and Florida.</div><div class="s">Smithsonian</div></div>
+      <div class="sigi"><div class="t">Britain may vote animals — a hedgehog, a puffin — onto its banknotes in place of historical figures.</div><div class="s">Smithsonian</div></div>
+      <div class="sigi"><div class="t">Kelsey Hightower on going from self-taught to Distinguished Engineer — and leaving at the top.</div><div class="s">The Pragmatic Engineer</div></div>
+      <div class="sigi"><div class="t">Let's Encrypt's post-quantum certificates arrive; the long crypto migration begins.</div><div class="s">letsencrypt.org</div></div>
+      <div class="sigi"><div class="t">Scientists formalised Feynman's rule for picking the best holiday restaurant.</div><div class="s">Marginal Revolution</div></div>
+      <div class="sigi"><div class="t">Elixir 1.20 adds gradual typing — opt-in types, kept backward compatible.</div><div class="s">elixir-lang.org</div></div>
+    </div>
+    <div class="sig-strip">
+      <div class="nb"><div class="v">100MW</div><div class="l">Google's first data-centre virtual power plant</div></div>
+      <div class="nb"><div class="v">150k→654k</div><div class="l">US autism-therapy jobs, 2019–25</div></div>
+      <div class="nb"><div class="v">32m</div><div class="l">Sterilised mosquitoes Google would release</div></div>
+      <div class="nb"><div class="v">$1,500</div><div class="l">Uber's monthly AI-tool cap, per engineer</div></div>
+    </div>
+  </div>
+  <div class="pfoot"><span>The wire, distilled</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 6 DEEP DIVE -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">DEEP DIVE</span><span class="pg">06</span></div>
+  <div class="pmain">
+    <div class="kick">The limit nobody put on the roadmap</div>
+    <h1 class="dd-head">The bottleneck isn't the model. It's the grid.</h1>
+    <p class="dd-dek">First the scarce resource was talent. Then it was compute. This week it quietly became electricity — and when a company starts financing power plants to run its data centres, the constraint has moved somewhere a product roadmap can't reach.</p>
+    <div class="dd-grid">
+      <div class="dd-body drop">
+        <p>The signal came from MIT Technology Review: Google is bankrolling a roughly 100-megawatt <em>virtual</em> power plant through a firm called Voltus. Rather than build a new plant, it pays homes and businesses to cut their consumption at peak times, freeing existing grid capacity for data centres on the US East Coast. The cheapest new power, it turns out, is the demand you can talk people out of.</p>
+        <p>Read it next to Stratechery's piece on Microsoft's Project Solara, which pushes intelligence back toward devices, and a pattern appears. Both are responses to the same wall: there is only so much power, in so many places, and you can't conjure a substation on a quarterly cadence. So you either secure the power — or move the work to where the power already is.</p>
+        <p>This is a genuinely new phase. For two years the AI story was about software eating the world; suddenly it's about the world's physical limits eating into AI — turbines, transmission lines, cooling water, permitting queues measured in years. None of it scales the way code does.</p>
+        <p>For a product manager it lands as an unglamorous truth: your cost of goods, your latency, even your carbon story now ride on an electricity market you don't control. The teams that win the next phase will be the ones that treat power and placement as first-class product constraints — not someone else's problem two layers down.</p>
+      </div>
+      <div class="dd-side">
+        <div class="pq">“AI's growth curve just hit something that doesn't scale on a quarterly cadence: physics.”</div>
+        <div class="mini-h">On the record</div>
+        <div class="ev"><b>1</b><span>Google funds a ~100MW virtual power plant (via Voltus) to free grid capacity for data centres.</span></div>
+        <div class="ev"><b>2</b><span>Microsoft's Project Solara pushes work to devices — relieving the centre.</span></div>
+        <div class="ev"><b>3</b><span>The cheapest new capacity is demand response: the consumption you avoid.</span></div>
+        <div class="dd-src">MIT Technology Review; Stratechery. 3 Jun 2026.</div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>≈ 350 words · 4-minute read</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 7 EVIDENCE -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">EVIDENCE</span><span class="pg">07</span></div>
+  <div class="pmain">
+    <div class="split">
+      <div class="col">
+        <div class="col-h">By the Numbers <span class="k">Footprint</span></div>
+        <div class="stat-cap">AI's footprint stopped being a metaphor this week — it showed up in power grids, labour markets, and (yes) mosquito populations.</div>
+        <div class="numgrid">
+          <div class="ng"><div class="n">100MW</div><div class="c">Google's first virtual power plant for data centres.</div><div class="src">MIT Tech Review</div></div>
+          <div class="ng"><div class="n">150k→654k</div><div class="c">US autism-therapy jobs, 2019–2025 — a quiet labour boom.</div><div class="src">Marginal Revolution</div></div>
+          <div class="ng"><div class="n">$1,500</div><div class="c">Uber's monthly AI-tool cap per engineer — the bill, capped.</div><div class="src">Simon Willison</div></div>
+          <div class="ng"><div class="n">32m</div><div class="c">Sterilised mosquitoes Google would release in CA &amp; FL.</div><div class="src">Smithsonian</div></div>
+        </div>
+        <div class="chart-note">Different units, one theme: the cost of AI is leaving the spreadsheet and turning up in the physical world.</div>
+      </div>
+      <div class="col">
+        <div class="col-h">The Debate <span class="k">Two views</span></div>
+        <div class="deb-q">Is an AI jobs-pocalypse actually coming?</div>
+        <div class="side"><div class="tag">View A — Unlikely</div><div class="pos">History reshuffles work; it rarely deletes it.</div><div class="arg">Labour economist Kathryn Anne Edwards argues general-purpose technologies move people between jobs rather than erasing them en masse. The real danger isn't the robots — it's a safety net too thin to catch anyone the transition does displace.</div><div class="who">Platformer · 3 Jun</div></div>
+        <div class="side"><div class="tag">View B — Don't relax</div><div class="pos">“Net neutral” is cold comfort if you're the one moved.</div><div class="arg">The cost reckoning plus the capability curve means some roles compress fast and locally. An aggregate that holds steady can still hide brutal churn underneath — and policy, not optimism, decides who absorbs it.</div><div class="who">The disruption camp</div></div>
+        <div class="deb-mid">Both sides may be right about the total and wrong about each other: the net number can hold while the distribution turns vicious. Distribution is where the pain — and the policy — actually lives.</div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>Numbers you can check</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 8 CONVERSATION -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">THE CONVERSATION</span><span class="pg">08</span></div>
+  <div class="pmain">
+    <div class="sec-h"><div class="tab"><span class="no">❝</span>The Conversation</div><div class="meta">What the sharpest writers<br>are arguing this week</div></div>
+    <p class="conv-intro">Five takes worth holding in your head at once — paraphrased from the week's best, across five different lenses. You don't have to agree; you do have to know they're being said.</p>
+    <div class="conv-grid">
+      <div class="conv"><div class="who">Kathryn Anne Edwards</div><div class="src">Platformer · on work</div><div class="claim">The AI jobs-pocalypse is unlikely. Fix the safety net, not the forecast — that's where the avoidable harm actually is.</div><div class="cleo"><b>Cleo</b> Aggregate calm, local pain. Plan for the second one.</div></div>
+      <div class="conv"><div class="who">Azeem Azhar</div><div class="src">Exponential View · on pricing</div><div class="claim">AI is moving to metered pricing the way the web moved from CPM to performance — value, billed by the unit of work.</div><div class="cleo"><b>Cleo</b> Whoever owns the meter owns the margin.</div></div>
+      <div class="conv"><div class="who">Kelsey Hightower</div><div class="src">The Pragmatic Engineer · on craft</div><div class="claim">You can go from self-taught to the very top of the field — and you can also choose to walk away at the top, on your terms.</div><div class="cleo"><b>Cleo</b> A career is something you design, not merely survive.</div></div>
+      <div class="conv"><div class="who">Tyler Cowen</div><div class="src">Marginal Revolution · on choosing</div><div class="claim">There's even a formula for when to stop hunting for the best holiday restaurant: lower your bar as the clock runs down.</div><div class="cleo"><b>Cleo</b> Optimising the search is its own trap. Satisfice, and order.</div></div>
+      <div class="conv"><div class="who">Eliane Glaser</div><div class="src">Aeon · on ideas</div><div class="claim">The Enlightenment survives its critics through one habit above all: permanent critique — including, ruthlessly, of itself.</div><div class="cleo"><b>Cleo</b> The point was never the answers. It was the nerve to keep asking.</div></div>
+    </div>
+  </div>
+  <div class="pfoot"><span>Paraphrased &amp; attributed · read the originals</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 9 SPOTLIGHT -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">SPOTLIGHT · STRATEGY</span><span class="pg">09</span></div>
+  <div class="pmain">
+    <div class="kick">Follow the endpoint, not the chatbot</div>
+    <h1 class="dd-head">The agent war moves to your devices.</h1>
+    <p class="dd-dek">With Project Solara, Microsoft reframes the PC as an endpoint for cloud agents — and Nvidia's shiny new “AI PC” suddenly looks like last era's idea. The fight over where intelligence actually runs is leaving the browser.</p>
+    <div class="dd-grid">
+      <div class="dd-body drop">
+        <p>Stratechery's argument this week is that Microsoft is no longer thinking about the PC as a thing that runs apps, but as a spoke — an endpoint that brokers your context to cloud agents and renders the result. Nvidia's RTX “AI PC,” by contrast, bets the intelligence belongs on the machine in front of you. Same hardware era, opposite theories of where the value sits.</p>
+        <p>It isn't a small distinction. If intelligence lives in the cloud, the device gets thin, switching costs drop, and the platform owner is whoever holds the agent. If it lives on-device, you get privacy, low latency, and a bill that doesn't meter every keystroke — but you inherit the limits of the silicon in someone's bag.</p>
+        <p>This issue's deep dive (p.6) ghosts this one: pushing work to devices is also a way to relieve the overloaded grid. The device debate and the power debate are the same debate wearing different clothes — both are about where, physically, the computation should happen.</p>
+        <p>For product teams, “where does our intelligence run?” has graduated from an architecture choice to a positioning one. Cloud-first buys you capability and control of the relationship; device-first buys you trust, speed and a kinder cost curve. Increasingly you'll have to pick a side and say so out loud.</p>
+      </div>
+      <div class="dd-side">
+        <div class="mini-h">Two theories of where AI runs</div>
+        <div class="layers">
+          <div class="layer hot"><span>Cloud agent</span> capability, control ▸</div>
+          <div class="layer"><span>Thin device</span> Project Solara's bet</div>
+          <div class="layer"><span>On-device</span> privacy, latency, cost</div>
+          <div class="layer"><span>Local silicon</span> Nvidia's bet</div>
+        </div>
+        <div class="ev"><b>MS</b><span>Project Solara: the PC as an agent endpoint.</span></div>
+        <div class="ev"><b>NV</b><span>RTX “AI PC”: keep the intelligence local.</span></div>
+        <div class="dd-src">Stratechery, 3 Jun 2026.</div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>≈ 320 words · the strategy read</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 10 LONG VIEW I -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">THE LONG VIEW</span><span class="pg">10</span></div>
+  <div class="pmain">
+    <div class="kick">A wider lens · away from the screen</div>
+    <h1 class="lv-head">In defence of permanent doubt</h1>
+    <p class="lv-dek">The Enlightenment is attacked from every direction now — as naïve, arrogant, even imperial. Aeon's quiet rebuttal: its real legacy was never a set of answers. It was the habit of permanent critique, turned even on itself.</p>
+    <div class="lv-grid">
+      <div class="lv-body drop">
+        <p>It has become fashionable to declare the Enlightenment a failed project — too confident in reason, too blind to its own power, the source of as much harm as progress. Writing in Aeon this week, Eliane Glaser doesn't deny the charges so much as reframe what's on trial.</p>
+        <p>The Enlightenment's durable gift, she argues, wasn't a body of conclusions about God, nature or government. It was a <em>method</em>: the insistence that any claim — including the Enlightenment's own — be open to question, evidence and revision. Permanent critique. The willingness to be wrong out loud.</p>
+        <p>Seen that way, the modern attacks on it are not its refutation but its continuation. To criticise the Enlightenment using reason and evidence is to do exactly the thing it asked for. The baby worth saving from the muddied bathwater isn't a creed; it's a disposition.</p>
+        <p>There's something useful here for anyone who builds. The strongest systems — scientific, civic, or merely a product team's — aren't the ones with the most confident answers. They're the ones with the cheapest, fastest path to noticing they're wrong and changing their minds. Certainty feels like strength and behaves like brittleness.</p>
+        <p>Which is, in the end, the same argument this whole magazine keeps making in a smaller key: the discipline isn't having the take. It's staying willing to revise it.</p>
+      </div>
+      <div class="lv-side">
+        <div class="lv-pq">“The strongest systems aren't the ones with the most confident answers — they're the ones quickest to notice they're wrong.”</div>
+        <div class="lv-pq-by">Distilled from Aeon · May 2026</div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>The non-tech read · ≈ 360 words</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 11 CRAFT -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">CRAFT</span><span class="pg">11</span></div>
+  <div class="pmain">
+    <div class="split">
+      <div class="col">
+        <div class="col-h">Framework of the Week <span class="k">Pricing</span></div>
+        <div class="td-sub">Price the verb, not the seat</div>
+        <div class="fw-explain">Per-seat pricing assumes value scales with who logs in. AI value scales with <em>work done</em> — so the meter should sit on the verb (a task run, a document drafted, a token spent), not the chair. The catch (see today's lead): a metered bill is a variable bill, and a variable bill needs a visible meter and a cap, or it scares the buyer off before the value lands.</div>
+        <svg class="fw-diagram" viewBox="0 0 360 138" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
+          <text x="90" y="14" font-size="7.5" font-weight="700" fill="#8c857b" text-anchor="middle" letter-spacing="0.5">PER SEAT</text>
+          <text x="270" y="14" font-size="7.5" font-weight="700" fill="#16605A" text-anchor="middle" letter-spacing="0.5">PER VERB</text>
+          <line x1="180" y1="6" x2="180" y2="132" stroke="#cdc8bd" stroke-width="1"/>
+          <text x="90" y="40" font-size="8.5" fill="#8c857b" text-anchor="middle">flat &amp; predictable</text>
+          <text x="90" y="58" font-size="8.5" fill="#8c857b" text-anchor="middle">value ≠ usage</text>
+          <text x="90" y="76" font-size="8.5" fill="#8c857b" text-anchor="middle">big users underpay</text>
+          <text x="90" y="94" font-size="8.5" fill="#8c857b" text-anchor="middle">small users priced out</text>
+          <text x="270" y="40" font-size="8.5" fill="#17140F" text-anchor="middle">scales with value</text>
+          <text x="270" y="58" font-size="8.5" fill="#17140F" text-anchor="middle">land small, grow big</text>
+          <text x="270" y="76" font-size="8.5" fill="#17140F" text-anchor="middle">needs a visible meter</text>
+          <text x="270" y="94" font-size="8.5" fill="#16605A" text-anchor="middle" font-weight="700">+ a cap (the guardrail)</text>
+          <rect x="210" y="104" width="120" height="20" fill="none" stroke="#16605A" stroke-width="1.2" rx="2"/>
+          <text x="270" y="117" font-size="7.5" fill="#16605A" text-anchor="middle" font-weight="700" letter-spacing="0.3">METER · CAP · EXPAND</text>
+        </svg>
+        <div class="apply"><div class="l">Monday morning</div><div class="t">For your next feature, name the unit of value you'd charge for, decide whether the customer can see the meter ticking, and set the cap — before the customer's finance team sets it for you.</div></div>
+      </div>
+      <div class="col">
+        <div class="col-h">Product Teardown <span class="k">Steal this</span></div>
+        <div class="td-sub">Gemini Omni — a talking you, in fifteen minutes</div>
+        <div class="td-what">Demoed via Lenny's: a face scan plus Google's Gemini Omni and Flow turns into a one-minute, production-grade talking-head video in roughly fifteen minutes — a pipeline that used to take a studio.</div>
+        <div class="wells">
+          <div class="well">Collapses a whole production chain — script, shoot, edit — into a single, fast, self-serve flow.</div>
+          <div class="well">Meets people in a format they already trust: short video, a face, a voice. No new literacy required.</div>
+          <div class="well">The “wow” lands in the first session — time-to-first-magic measured in minutes, not days.</div>
+        </div>
+        <div class="steal"><div class="l">The one to steal (carefully)</div><div class="t">Compress the time-to-first-magic until the value is undeniable in one sitting — but build the consent and provenance in from day one. A 15-minute deepfake of anyone is exactly as dangerous as it is delightful.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>One framework, one teardown</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 12 THE STACK -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">THE STACK</span><span class="pg">12</span></div>
+  <div class="pmain">
+    <div class="sec-h"><div class="tab"><span class="no">⌗</span>The Stack</div><div class="meta">Six things worth opening<br>at least once this week</div></div>
+    <div class="stack-grid">
+      <div class="stk"><div class="h">Gemma 4 12B <span class="tag">Try it</span></div><div class="w">Google's unified, encoder-free multimodal model — text and images in one model, small enough to run yourself. The serious open-weights option for agentic and on-device work.</div><div class="src">▸ blog.google</div></div>
+      <div class="stk"><div class="h">Elixir 1.20 <span class="tag">Watch</span></div><div class="w">Gradual typing arrives: opt-in annotations, fully backward compatible. The pragmatic peace treaty in the dynamic-vs-static war — worth studying even if you'll never write Elixir.</div><div class="src">▸ elixir-lang.org</div></div>
+      <div class="stk"><div class="h">Let's Encrypt — post-quantum certs <span class="tag">Plan</span></div><div class="w">Quantum-resistant certificates land where most of the web's TLS lives. Nothing to do today; everything to put on the someday-roadmap so it isn't a fire later.</div><div class="src">▸ letsencrypt.org</div></div>
+      <div class="stk"><div class="h">DaVinci Resolve 21 <span class="tag">Joy</span></div><div class="w">A professional edit suite with a startlingly capable free tier gets a major release. If you make video at all, it out-specs its price by an absurd margin.</div><div class="src">▸ blackmagicdesign.com</div></div>
+      <div class="stk"><div class="h">Demand response (Voltus model) <span class="tag">Read</span></div><div class="w">Not a tool — a pattern. Google paying users to <em>not</em> consume, to free capacity, is the cheapest power there is. The same logic applies to any constrained resource you run.</div><div class="src">▸ MIT Technology Review</div></div>
+      <div class="stk"><div class="h">Gemini Omni <span class="tag">Caution</span></div><div class="w">Face scan to talking-head video in minutes. A glimpse of consumer-grade synthetic media — open it to understand the trend, not to clone yourself. Consent is now a product feature.</div><div class="src">▸ Lenny's Newsletter</div></div>
+    </div>
+  </div>
+  <div class="pfoot"><span>Tools, patterns, and one warning</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 13 THE METRIC -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">THE METRIC</span><span class="pg">13</span></div>
+  <div class="pmain">
+    <div class="split">
+      <div class="col col-fill">
+        <div class="col-h">Usage pricing <span class="k">In three numbers</span></div>
+        <div class="stat-cap">If you're going to “price the verb” (p.11), these are the three numbers that decide whether it works. Learn to say them out loud before you ship a meter.</div>
+        <div class="numgrid" style="grid-template-columns:1fr;">
+          <div class="ng"><div class="n">The unit</div><div class="c"><b>What you meter.</b> A task, a thousand tokens, a generated asset. The art is choosing a unit the customer already believes is valuable — so the bill reads as fair, not punitive.</div></div>
+          <div class="ng"><div class="n">The cap</div><div class="c"><b>What stops a runaway bill.</b> A ceiling per user or team (Uber's $1,500) that turns a scary variable cost into a known, boardroom-friendly maximum.</div></div>
+          <div class="ng"><div class="n">NDR</div><div class="c"><b>Net dollar retention.</b> With usage pricing, good products expand without a new sale — accounts grow as they use more. NDR over 100% is the whole promise, made visible.</div></div>
+        </div>
+        <div class="chart-note">Unit · Cap · NDR — name all three, or you've shipped a meter and hoped.</div>
+      </div>
+      <div class="col col-fill">
+        <div class="col-h">Read it as a PM <span class="k">Notes</span></div>
+        <div class="side"><div class="tag">01</div><div class="pos">A meter the customer can't see is a tax.</div><div class="arg">Usage pricing only feels fair when the buyer can watch the number move and tie it to value. Hide the meter and every invoice becomes an argument.</div></div>
+        <div class="side"><div class="tag">02</div><div class="pos">The cap is a feature, not a discount.</div><div class="arg">A visible ceiling is what lets a nervous buyer say yes. Sell it as predictability, not as a markdown — Uber's cap protects Uber's vendor as much as Uber.</div></div>
+        <div class="side"><div class="tag">03</div><div class="pos">Expansion beats acquisition.</div><div class="arg">The quiet superpower of metered pricing is NDR: revenue that grows from accounts you already won. It's cheaper than new logos and it compounds.</div></div>
+        <div class="side"><div class="tag">04 — watch for</div><div class="pos">The bill-shock churn.</div><div class="arg">The failure mode isn't low usage; it's a surprise invoice. Alerting, forecasts and soft caps aren't nice-to-haves — they're the retention plan.</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>A working explainer, not a hot take</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 14 SCIENCE & WONDER -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">SCIENCE &amp; WONDER</span><span class="pg">14</span></div>
+  <div class="pmain">
+    <div class="sec-h"><div class="tab"><span class="no">✦</span>Science &amp; Wonder</div><div class="meta">The week the machines<br>did some maths</div></div>
+    <div class="sci-grid">
+      <div class="mcol">
+        <div class="sci-lead">
+          <div class="h">An AI cracked a maths problem that stumped humans for 80 years</div>
+          <div class="b">In 1946 Paul Erdős posed a deceptively simple question about “unit distances” — how often a fixed distance can repeat among a set of points. It resisted the field's best for eight decades. This week, Smithsonian reports, an AI model surfaced a genuinely clever improvement. Not a brute-force grind but an <em>idea</em> — the kind of result that makes “AI for science” more than a slogan, and quietly raises the bar for what counts as a hard problem.</div>
+          <div class="src">Smithsonian · 3 Jun</div>
+        </div>
+        <svg class="sci-fig" viewBox="0 0 320 130" fill="none" stroke="#16605A" stroke-width="0.8" xmlns="http://www.w3.org/2000/svg">
+          <g opacity="0.9">
+            <circle cx="60" cy="40" r="3" fill="#16605A" stroke="none"/><circle cx="150" cy="40" r="3" fill="#16605A" stroke="none"/><circle cx="240" cy="40" r="3" fill="#16605A" stroke="none"/>
+            <circle cx="105" cy="78" r="3" fill="#16605A" stroke="none"/><circle cx="195" cy="78" r="3" fill="#16605A" stroke="none"/><circle cx="60" cy="78" r="3" fill="#16605A" stroke="none"/><circle cx="240" cy="78" r="3" fill="#16605A" stroke="none"/>
+          </g>
+          <g opacity="0.5"><line x1="60" y1="40" x2="150" y2="40"/><line x1="150" y1="40" x2="240" y2="40"/><line x1="60" y1="40" x2="60" y2="78"/><line x1="240" y1="40" x2="240" y2="78"/><line x1="60" y1="78" x2="105" y2="78"/><line x1="105" y1="78" x2="150" y2="40"/><line x1="195" y1="78" x2="240" y2="78"/><line x1="150" y1="40" x2="195" y2="78"/></g>
+          <text x="160" y="118" font-family="Inter,sans-serif" font-size="7" fill="#8c857b" text-anchor="middle" stroke="none" letter-spacing="0.5">HOW OFTEN CAN ONE DISTANCE REPEAT? — ERDŐS, 1946</text>
+        </svg>
+      </div>
+      <div class="mcol">
+        <div class="mh">Big tech, strange infrastructure</div>
+        <div class="wonder"><div class="h">32 million mosquitoes</div><div class="s">Google is seeking EPA approval to release millions of sterilised mosquitoes across California and Florida to crash disease-carrying populations.</div><div class="src">Smithsonian</div></div>
+        <div class="wonder"><div class="h">A hedgehog for Churchill?</div><div class="s">Britain may let the public vote animals — butterflies, dolphins, puffins — onto its banknotes in place of historical figures.</div><div class="src">Smithsonian</div></div>
+        <div class="wonder"><div class="h">Pigeons steer by their livers</div><div class="s">The homing instinct may come from iron-rich immune cells in the liver, acting as a built-in magnetic compass.</div><div class="src">Smithsonian</div></div>
+      </div>
+      <div class="mcol">
+        <div class="mh">Then, in a lab</div>
+        <div class="wonder"><div class="h">The first time science paused itself</div><div class="s">An Aeon film revisits the early-1970s scientists who could suddenly splice DNA — and stopped to ask whether they should. A rare, deliberate hesitation before a powerful new tool.</div><div class="src">Aeon</div></div>
+        <div class="mh">The feeling</div>
+        <div class="idea">A machine finds a sixty-year-old idea; a company breeds mosquitoes; a nation puts a hedgehog on its money. The frontier isn't only silicon — and it's stranger, and more crowded, than the headlines let on.</div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>Proof the frontier isn't only silicon</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 15 THEN -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">THEN</span><span class="pg">15</span></div>
+  <div class="pmain">
+    <div class="kick">The past, usefully</div>
+    <h1 class="dd-head">The summer scientists hit pause on themselves</h1>
+    <p class="dd-dek">An Aeon film this week revisits the most disciplined thing a powerful field ever did: in the 1970s, the biologists who'd just learned to rewrite DNA stopped, voluntarily, to ask whether they should — a precedent worth holding up against every breathless AI launch.</p>
+    <div class="dd-grid">
+      <div class="dd-body drop">
+        <p>In 1973, molecular biologists realised they could cut genes from one organism and paste them into another. It was the atomic-bomb moment of the life sciences — a capability that ran far ahead of anyone's understanding of its consequences. What happened next is the part worth remembering.</p>
+        <p>Rather than race ahead, leading researchers called for a halt. They wrote to their own field asking colleagues to suspend the riskiest experiments, and in 1975 gathered at Asilomar to argue, in public, about safety, containment and whether some lines shouldn't be crossed at all. Scientists regulating themselves, before a regulator or a disaster forced the question.</p>
+        <p>It was imperfect — critics note it dodged the thornier ethics and focused on lab safety. But the move itself was extraordinary: a powerful field choosing deliberate hesitation over momentum, treating “can” and “should” as different questions worth different rooms.</p>
+        <p>The rhyme with this moment is impossible to miss. Every week this magazine covers a capability arriving faster than our grip on it. Asilomar is the standing proof that a field <em>can</em> pause to think — not as a brake on progress, but as part of it. The question for our decade is whether anyone still remembers how.</p>
+      </div>
+      <div class="dd-side">
+        <div class="pq">“They treated ‘can’ and ‘should’ as different questions — and gave each its own room.”</div>
+        <div class="mini-h">Also filed under “Then”</div>
+        <div class="di"><span class="y">1783</span><span>The Montgolfier brothers fly a hot-air balloon publicly for the first time — 4 June, over Annonay.</span></div>
+        <div class="ev"><b>note</b><span>Two ways to meet a new power: leap into the sky, or stop and ask first. The best fields learn to do both.</span></div>
+        <div class="dd-src">Aeon, “Life recombined,” May 2026; on-this-day, 4 June.</div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>History that earns its place</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 16 LONG VIEW II -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">THE LONG VIEW</span><span class="pg">16</span></div>
+  <div class="pmain">
+    <div class="kick">An essay · for the commute or the cooldown</div>
+    <h1 class="lv-head">When to stop looking for the best restaurant</h1>
+    <p class="lv-dek">Marginal Revolution flagged a paper decoding Richard Feynman's rule for picking a holiday dinner. It's a small, funny result with a large, serious lesson about the cost of always wanting the best.</p>
+    <div class="lv-grid">
+      <div class="lv-body drop">
+        <p>The physicist Richard Feynman, the story goes, had a method for choosing where to eat on holiday. Early in a trip you can afford to be picky — there are many dinners ahead, so hold out for something excellent. As the trip nears its end, drop your standard: a merely good meal now beats a perfect one you'll never get to. Researchers this week wrote the rule down properly, and the maths is tidy: your threshold for “good enough” should fall as your remaining chances do.</p>
+        <p>It sounds like a joke about restaurants. It's really about the tax we pay for insisting on the best of everything. Searching has a cost — time, attention, the meals you skip while hunting for a better one. Past a point, more searching makes you worse off, not better. The optimiser starves while the satisficer eats.</p>
+        <p>Anyone who ships products knows this tax intimately. The endless bake-off between two good options. The roadmap that never freezes because something better might come. The hire you don't make because the perfect candidate might be next. “Best” is seductive precisely because it's never quite reachable — which is what makes it such an effective way to never decide.</p>
+        <p>Feynman's rule is a small permission slip: define “good enough,” notice your clock, and when the two meet, order. The discipline isn't finding the best. It's knowing when you've found enough — and being willing to sit down and enjoy it.</p>
+      </div>
+      <div class="lv-side">
+        <div class="lv-pq">“The optimiser starves while the satisficer eats. Define ‘good enough,’ watch the clock, and order.”</div>
+        <div class="lv-pq-by">Distilled from Marginal Revolution · 3 Jun 2026</div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>The human read · ≈ 360 words</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 17 THE MARGIN -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">THE MARGIN</span><span class="pg">17</span></div>
+  <div class="pmain">
+    <div class="sec-h"><div class="tab"><span class="no">✳</span>The Margin</div><div class="meta">A palate cleanser<br>Away from the feed</div></div>
+    <div class="margin-grid">
+      <div class="mcol">
+        <div class="mh">One good idea</div>
+        <div class="idea"><b>The cheapest power is the demand you avoid.</b> Google's data-centre move this week — paying people to <em>not</em> use electricity at peak, rather than building a new plant — is a quietly profound pattern. The most valuable capacity is often the consumption you can talk a system out of. It generalises far past the grid: the fastest feature is sometimes the one you delete, the best meeting the one you cancel, the cheapest scale the load you shed. Subtraction as infrastructure. <span style="color:#8c857b;font-style:italic;">A magazine built on cutting nine-tenths is, naturally, a fan.</span></div>
+        <div class="mh">Read next</div>
+        <div class="rec"><div class="h">“You're paying for tokens. Now what?” — Exponential View</div><div class="w">The metered-pricing shift, laid out clearly. The lead story's source.</div></div>
+        <div class="rec"><div class="h">The case against the jobs-pocalypse — Platformer</div><div class="w">A calm, data-grounded antidote to the AI-unemployment panic.</div></div>
+      </div>
+      <div class="mcol">
+        <div class="mh">Said well</div>
+        <div class="quote-box"><div class="q">“How we spend our days is, of course, how we spend our lives.”</div><div class="by">— Annie Dillard, <em>The Writing Life</em></div></div>
+        <div class="mh">Tiny joys, June</div>
+        <div class="joy"><b>Watch</b> Aeon on why Mozart's operas work as tests of moral character — music built to trap you, beautifully, in an ethical bind.</div>
+        <div class="joy"><b>Vote</b> Britain is choosing animals for its banknotes. Lobby, quietly, for the hedgehog.</div>
+        <div class="joy"><b>Make</b> Something with DaVinci Resolve's free tier this weekend, just to feel a tool out-class its price.</div>
+      </div>
+      <div class="mcol">
+        <div class="mh">A small ritual</div>
+        <div class="idea" style="margin-bottom:.14in;">Apply Feynman's rule (p.16) to one decision today: name your “good enough,” notice how much time is left, and when they meet — decide, and move on. Bank the minutes you'd have spent optimising.</div>
+        <div style="margin-top:auto;">
+          <svg viewBox="0 0 240 130" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#16605A" opacity="0.82">
+            <path d="M70 76 h70 v14 a22 22 0 0 1 -22 22 h-26 a22 22 0 0 1 -22 -22 z" stroke-width="1.3"/>
+            <path d="M140 80 a16 16 0 0 1 0 28" stroke-width="1.3"/>
+            <path d="M88 62 q6 -10 0 -20" stroke-width="1"/><path d="M105 62 q6 -10 0 -20" stroke-width="1"/><path d="M122 62 q6 -10 0 -20" stroke-width="1"/>
+            <line x1="58" y1="120" x2="156" y2="120" stroke-width="1"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>Put the phone down after this page</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 18 PUZZLES -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">PUZZLES &amp; PASTIMES</span><span class="pg">18</span></div>
+  <div class="pmain">
+    <div class="sec-h"><div class="tab"><span class="no">◆</span>Puzzles &amp; Pastimes</div><div class="meta">Pencil, not keyboard<br>Answers at the foot</div></div>
+    <div class="puz-grid">
+      <div class="mcol">
+        <div class="puz-h">Cleo Connections</div>
+        <div class="puz-d">Sort the sixteen into four groups of four. One word in each row is a decoy until the link clicks.</div>
+        <div class="conn">
+          <div class="tile">Gemma</div><div class="tile">Grid</div><div class="tile">Lattice</div><div class="tile">Meter</div>
+          <div class="tile">Power</div><div class="tile">Elixir</div><div class="tile">Cipher</div><div class="tile">Seat</div>
+          <div class="tile">Cert</div><div class="tile">Plant</div><div class="tile">Resolve</div><div class="tile">Token</div>
+          <div class="tile">Cooling</div><div class="tile">Qubit</div><div class="tile">Solara</div><div class="tile">Cap</div>
+        </div>
+        <div class="puz-key">GROUPS — Shipped this week: Gemma, Elixir, Resolve, Solara · Feeds a data centre: Grid, Power, Plant, Cooling · Post-quantum words: Lattice, Cipher, Cert, Qubit · Pricing words: Meter, Seat, Token, Cap.</div>
+      </div>
+      <div class="mcol">
+        <div class="puz-h">Five Questions</div>
+        <div class="triv">
+          <div class="q"><span>Google's open, encoder-free multimodal model, released this week.</span></div>
+          <div class="q"><span>Microsoft's “PC as agent endpoint” vision, vs Nvidia's AI PC.</span></div>
+          <div class="q"><span>What Google is financing to free grid capacity for data centres.</span></div>
+          <div class="q"><span>The pricing shift: from per-seat to per-___.</span></div>
+          <div class="q"><span>What the Montgolfiers flew publicly for the first time in 1783.</span></div>
+        </div>
+        <div class="puz-h puz-d2">Anagrams</div>
+        <div class="puz-d">Unscramble — each is a word from today's issue.</div>
+        <div class="anag">NEKOT</div>
+        <div class="anag">TICELAT</div>
+        <div class="anag">GLINOCO</div>
+        <div class="puz-key">ANSWERS — Five Questions: Gemma 4 · Project Solara · a virtual power plant · token (usage) · a hot-air balloon. Anagrams: Token · Lattice · Cooling.</div>
+      </div>
+      <div class="mcol">
+        <div class="puz-h">The Estimate</div>
+        <div class="est">Google's first virtual power plant frees about <b>100 megawatts</b>. Very roughly, how many average homes' worth of demand is that at any moment? Guess before you check.</div>
+        <div class="puz-key">Answer — loosely 50,000–100,000 homes, depending on the hour. The point: “demand response” is power-plant-scale, built from millions of small noes.</div>
+        <div class="puz-h puz-d2">A question to sit with</div>
+        <div class="sit">If your product charged per use instead of per seat, would people use it more — or less?</div>
+        <div class="puz-h puz-d2">Today's word</div>
+        <div class="est"><b>Breviloquent</b> — saying much in few words; speaking with deliberate brevity. From the Latin <em>brevis</em> (short) + <em>loqui</em> (to speak). The whole ambition of this magazine, in one adjective.</div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>No app required</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 19 THE DESK -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">THE DESK</span><span class="pg">19</span></div>
+  <div class="pmain">
+    <div class="sec-h"><div class="tab"><span class="no">☼</span>The Desk</div><div class="meta">Your almanac<br>Only what's real today</div></div>
+    <div class="margin-grid">
+      <div class="mcol">
+        <div class="mh">On this day — 4 June</div>
+        <div class="di"><span class="y">1783</span><span>The Montgolfier brothers give the first public demonstration of a hot-air balloon, at Annonay in France.</span></div>
+        <div class="di"><span class="y">1942</span><span>The Battle of Midway begins — the Pacific turning point of the Second World War.</span></div>
+        <div class="di"><span class="y">1989</span><span>The Tiananmen Square protests are suppressed in Beijing.</span></div>
+        <div class="mh">Word of the day</div>
+        <div class="wod">Breviloquent</div>
+        <div class="wod-pos">adjective · from Latin <em>brevis</em> + <em>loqui</em></div>
+        <div class="wod-def">Expressing much in very few words; speaking with deliberate concision. The quiet ideal of every page in this issue.</div>
+      </div>
+      <div class="mcol">
+        <div class="mh">From the kitchen</div>
+        <div class="recipe-steps"><b>Dal tadka, twenty minutes.</b> Pressure-cook a cup of toor dal with turmeric and salt till soft. In ghee, bloom cumin, mustard seeds, dried red chilli, a fat pinch of asafoetida, then garlic and ginger; tip in chopped tomato and cook to a jam. Fold the tempering through the dal, loosen with hot water, finish with lemon and coriander. Eat with rice and the news already read.</div>
+        <div class="mh">Closing ritual</div>
+        <div class="idea">Tonight, write tomorrow's single most important task on a sticky note and leave the phone on the far side of the room. Wake, read one page of this on paper, then begin. That's the whole system.</div>
+      </div>
+      <div class="mcol">
+        <div class="mh">Fun fact</div>
+        <div class="idea" style="margin-bottom:.16in;"><b>Honey never spoils.</b> Archaeologists have opened 3,000-year-old pots of honey in Egyptian tombs and found them still perfectly edible — too acidic and too dry for microbes to survive. The only pantry staple that outlasts the civilisation that made it.</div>
+        <div class="mh">Why this page is short today</div>
+        <div class="idea">Weather, cricket and your calendar live here too — but only when their feeds are connected and actually have something to report. None did this morning, so none are shown. An empty box is a small lie; Cleo would rather leave the space honest.</div>
+        <div style="margin-top:auto;">
+          <svg viewBox="0 0 240 96" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#16605A" opacity="0.8">
+            <circle cx="120" cy="44" r="22" stroke-width="1.3"/>
+            <g stroke-width="1"><line x1="120" y1="6" x2="120" y2="18"/><line x1="120" y1="70" x2="120" y2="82"/><line x1="82" y1="44" x2="94" y2="44"/><line x1="146" y1="44" x2="158" y2="44"/><line x1="93" y1="17" x2="101" y2="25"/><line x1="139" y1="63" x2="147" y2="71"/><line x1="147" y1="17" x2="139" y2="25"/><line x1="101" y1="63" x2="93" y2="71"/></g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>Weather &amp; cricket omitted — no live feed today</span><span>Cleo Daily — a Claude-authored brief</span></div>
+</section>
+
+<!-- 20 COLOPHON -->
+<section class="page">
+  <div class="rhead"><span>Cleo Daily · No.1</span><span class="mid">COLOPHON</span><span class="pg">20</span></div>
+  <div class="pmain">
+    <div class="sec-h"><div class="tab">From the desk</div><div class="meta">How this issue was made<br>&amp; what's next</div></div>
+    <div class="colo">
+      <div>
+        <p class="colo-note"><span class="drop">I</span>ssue one. Two questions are reshaping how products get built — what to charge for AI, and where the power to run it comes from — and these twenty pages are about both. Each morning the routine reads a wide roster of blogs and newsletters and keeps about one item in five. Some sources had nothing fresh to say, so they don't appear; the weather and cricket feeds weren't connected, so the Desk simply leaves their space empty rather than fake it. Print it front and back, fold it once, read it with coffee, and leave the phone in the other room.</p>
+        <div class="colo-sig">Cleo Daily, your automated desk editor<span>Assembled by a Claude Code routine · 4 June 2026</span></div>
+        <div class="next"><div class="l">Tomorrow — Fri 5 June</div><div class="t">Connect a source and it appears here: your inbox, your calendar, a cricket feed, your bank's summary, an MCP server you wrote yourself. The brief bends to whatever you point it at — and shows only what's really there.</div></div>
+      </div>
+      <div class="colo-side">
+        <div class="mini-h" style="border-color:var(--acc);color:var(--acc);">This issue, in numbers</div>
+        <div class="made">
+          <div class="row"><span class="k">Feeds read</span><span class="v">21</span></div>
+          <div class="row"><span class="k">Items weighed</span><span class="v">≈ 90</span></div>
+          <div class="row"><span class="k">Quiet feeds, omitted</span><span class="v">4</span></div>
+          <div class="row"><span class="k">Made the page</span><span class="v">≈ 20</span></div>
+          <div class="row"><span class="k">Pages</span><span class="v">20</span></div>
+          <div class="row"><span class="k">Photos</span><span class="v">zero</span></div>
+        </div>
+        <div class="ship">
+          <div class="mini-h" style="border-color:var(--acc);color:var(--acc);">Masthead</div>
+          <div class="si"><span class="t">Editor</span><span>Cleo — an LLM, on a schedule.</span></div>
+          <div class="si"><span class="t">Sources</span><span>Two dozen feeds, via MCP.</span></div>
+          <div class="si"><span class="t">Set in</span><span>Fraunces, Source Serif, Inter.</span></div>
+        </div>
+        <div style="margin-top:auto;font-family:'Inter',sans-serif;font-size:6.3pt;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);padding-top:.12in;border-top:1px solid var(--rule);">
+          Open source · the editor is an LLM · the printer is yours · shows only what's really there
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pfoot"><span>End of issue No.1 · twenty pages, front &amp; back</span><span>Built white-on-white for ink-tank printers</span></div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "//": "Copy to .mcp.json and fill in. .mcp.json is gitignored — keep secrets out of source.",
+  "//sources": "Each source named in cleo.toml [[sources]] maps to one server here.",
+  "mcpServers": {
+    "rss": {
+      "command": "npx",
+      "args": ["-y", "@cleo/mcp-rss"],
+      "//": "Fetches + extracts feeds. Use a browser-grade User-Agent so the Verge/Ars/SVPG don't 403."
+    },
+    "gmail": {
+      "command": "npx",
+      "args": ["-y", "@cleo/mcp-gmail"],
+      "env": { "GMAIL_OAUTH_TOKEN": "${GMAIL_OAUTH_TOKEN}" },
+      "//": "Newsletters that are paywalled on the web (Stratechery, Money Stuff) arrive here instead."
+    },
+    "x": {
+      "command": "npx",
+      "args": ["-y", "@cleo/mcp-x"],
+      "env": { "X_BEARER_TOKEN": "${X_BEARER_TOKEN}" }
+    },
+    "calendar": {
+      "command": "npx",
+      "args": ["-y", "@cleo/mcp-calendar"],
+      "env": { "GOOGLE_CALENDAR_TOKEN": "${GOOGLE_CALENDAR_TOKEN}" }
+    },
+    "cricket": {
+      "command": "npx",
+      "args": ["-y", "@cleo/mcp-cricket"],
+      "//": "Powers the Desk scoreboard. Wrap any cricket-data API; filter to your teams in cleo.toml."
+    },
+    "weather": {
+      "command": "npx",
+      "args": ["-y", "@cleo/mcp-open-meteo"],
+      "//": "Open-Meteo needs no key; set lat/long in cleo.toml."
+    }
+  }
+}

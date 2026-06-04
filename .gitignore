@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Secrets — never commit these
+.env
+.mcp.json
+*.key
+
+# Runtime output (issues are generated; the committed one in examples/ is the showcase)
+/runs/
+/issues/
+# Per-page PNG previews are regenerable from the PDF/HTML
+**/p-*.png
+**/page-*.png
+# Bulky prototype render artifacts (kept on disk, not in the repo)
+**/out/
+
+# Local-only agent instructions (never publish)
+CLAUDE.local.md
+CLAUDE.md
