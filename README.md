@@ -9,6 +9,10 @@ You declare your *sources*, a *persona*, and a *look*. A scheduled Claude Code r
 
 *The cure for the feed is a thing that can't scroll back.*
 
+**▶ [Watch the 77-second walkthrough](assets/cleo-daily.mp4)** — from raw feeds to a printed brief.
+
+https://github.com/ankitaggarwal/cleo-daily/raw/main/assets/cleo-daily.mp4
+
 </div>
 
 ---
