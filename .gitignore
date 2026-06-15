@@ -36,6 +36,8 @@ CLAUDE.md
 
 # Local-only notes (video build recipe, etc.) — never publish
 *.local.md
+# Session handoff notes — local only
+handoff.md
 
 # Local-only video build scripts (never publish)
 .video-build/
