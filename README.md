@@ -9,17 +9,7 @@ and prints a hyper-personal magazine you can hold.**
 
 `Anthropic routines` · `MCP` · `headless Chrome` · `Python` · `Tailscale`
 
-<!-- ───────────────────────────────────────────────────────────────────────
-  INLINE VIDEO — one manual step to get the native player (your pick).
-  1. open any issue/PR on GitHub, drag `assets/cleo-daily-web.mp4` (2.1 MB)
-     into the comment box; GitHub uploads it and gives you a URL like
-     https://github.com/user-attachments/assets/XXXXXXXX
-  2. paste that URL on its own line right below this comment
-  3. delete the clickable-thumbnail block beneath it
-  Until then, the thumbnail below works and links to the walkthrough.
-──────────────────────────────────────────────────────────────────────── -->
-
-[![Watch the 77-second walkthrough — from raw feeds to a printed brief](assets/preview-cover.png)](https://github.com/ankitaggarwal/cleo-daily/raw/main/assets/cleo-daily-web.mp4)
+https://github.com/user-attachments/assets/2c6d1cef-8b94-42da-b91f-b97e7bb5b3bc
 
 **▶ [Watch the 77-second walkthrough](https://github.com/ankitaggarwal/cleo-daily/raw/main/assets/cleo-daily-web.mp4)** — from raw feeds to a printed brief.
 
