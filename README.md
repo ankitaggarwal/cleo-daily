@@ -2,16 +2,28 @@
 
 # Cleo Daily
 
-**An open-source engine for LLM-authored print magazines.**
-You declare your *sources*, a *persona*, and a *look*. A scheduled Claude Code routine reads hundreds of items each morning, keeps roughly one in ten, writes them up in a voice you can stand, and lays the result out as a print-ready landscape PDF — built white-on-white for an ink-tank printer, so you can read on paper and stop scrolling.
+### The future is hyper-personal — and *taste*, not volume, is the scarce thing.
 
-<img src="assets/preview-cover.png" width="78%" alt="Cleo Daily — cover of issue No.1">
+**An open-source engine that reads hundreds of sources a day, filters out ~99% of the noise,
+and prints a hyper-personal magazine you can hold.**
+
+`Anthropic routines` · `MCP` · `headless Chrome` · `Python` · `Tailscale`
+
+<!-- ───────────────────────────────────────────────────────────────────────
+  INLINE VIDEO — one manual step to get the native player (your pick).
+  1. open any issue/PR on GitHub, drag `assets/cleo-daily-web.mp4` (2.1 MB)
+     into the comment box; GitHub uploads it and gives you a URL like
+     https://github.com/user-attachments/assets/XXXXXXXX
+  2. paste that URL on its own line right below this comment
+  3. delete the clickable-thumbnail block beneath it
+  Until then, the thumbnail below works and links to the walkthrough.
+──────────────────────────────────────────────────────────────────────── -->
+
+[![Watch the 77-second walkthrough — from raw feeds to a printed brief](assets/preview-cover.png)](https://github.com/ankitaggarwal/cleo-daily/raw/main/assets/cleo-daily-web.mp4)
+
+**▶ [Watch the 77-second walkthrough](https://github.com/ankitaggarwal/cleo-daily/raw/main/assets/cleo-daily-web.mp4)** — from raw feeds to a printed brief.
 
 *The cure for the feed is a thing that can't scroll back.*
-
-**▶ [Watch the 77-second walkthrough](assets/cleo-daily.mp4)** — from raw feeds to a printed brief.
-
-https://github.com/ankitaggarwal/cleo-daily/raw/main/assets/cleo-daily.mp4
 
 </div>
 
@@ -19,90 +31,112 @@ https://github.com/ankitaggarwal/cleo-daily/raw/main/assets/cleo-daily.mp4
 
 ## What it is
 
-Cleo Daily turns a wide, curated set of blogs, newsletters and feeds into a calm, dense, **20-page landscape brief** — once a day, automatically. It was built for one reader (a product manager drowning in tabs) but the engine is general: change the config and it's a different publication.
+Cleo Daily turns a wide, curated set of blogs, newsletters and feeds into a calm, dense,
+**landscape print brief** — once a day, automatically, white-on-white for an ink-tank printer
+so you can read on paper and stop scrolling. It was built for one reader (a product manager
+drowning in tabs), but the engine is general: **change one config file and it's a different
+publication.**
 
-The core idea is a clean split:
+The whole design is one split:
 
-> **Boring, reliable work is code. Work that needs taste is the LLM.**
+> ### Boring, reliable work is code. Work that needs taste is the model.
 
-- Connecting to sources, normalising items, rendering HTML→PDF, publishing — **deterministic code**.
-- Deciding what to keep, what to cut, what matters, how to say it, what deserves a picture — **the LLM ("the Editor")**.
+- Connecting to sources, normalising items, rendering HTML→PDF, publishing — **deterministic code** (`cleo`).
+- Deciding what to keep, what to cut, what matters, how to say it — **the model** (the *Editor*, a scheduled Claude routine).
 
-There is no separate orchestrator. **The scheduled Claude Code routine *is* the engine.**
+There is no separate orchestrator. **The scheduled Claude routine *is* the engine.**
+
+> **What it taught me:** the hard part wasn't the tech, it was *subtraction* — a thin day has to
+> get a thin issue, or the whole thing stops being trusted.
 
 ## How it works
 
 ```
-cleo.toml ──▶  ROUTINE (Claude Code, scheduled daily)
-  persona        1 LOAD      read persona, beats, theme, targets
-  sources        2 INGEST    pull each source over MCP            (code)
-  theme          3 NORMALIZE → one Item schema, dedupe, window    (code)
-  publish        4 EDIT      filter ≤1-in-10 · cluster · rank ·   (LLM ◀ the heart)
-                              write in voice · commission images
-                 5 RENDER    issue.json + theme → Chrome → PDF    (code)
-                 6 PUBLISH   file · git · email · web             (code)
+cleo.toml ─▶  THE ROUTINE  (Claude, scheduled daily)               who does it
+  persona       1 INGEST    pull every source over MCP, normalize    cleo  (code)
+  features      2 EDIT      read 200–400 · keep ≤1-in-10 · cluster ·  ROUTINE ◀ the heart
+  sources                   rank · write in voice · commission art    (the model / taste)
+  theme         3 RENDER    issue.json + theme → Chrome → print PDF   cleo  (code)
+  publish       4 PUBLISH   file · git · email · web                  cleo  (code)
 ```
 
-Four contracts are the only things you ever touch:
+Run it by hand to see the whole loop:
 
-| Contract | What it is | Add one by… |
-|---|---|---|
-| **Source** | an MCP server that returns raw content | adding a server + a `[[sources]]` block |
-| **Item** | the normalised unit every source maps into | (fixed — adapters map *into* it) |
-| **Issue** | theme-agnostic structured content the Editor emits | extending the section vocabulary |
-| **Theme** | an HTML/CSS package that renders an Issue to print | dropping a folder in `themes/` |
-| **Publisher** | ships the finished artifact | a small function in `cleo/publish/` |
+```bash
+uv venv && uv pip install -e '.[dev]'   # Python 3.10+, Chrome on PATH
+cleo doctor                              # what's configured, live, and missing
+cleo run --date today                    # ingest → edit → render → publish → PDF
+```
 
-Full design in **[ARCHITECTURE.md](ARCHITECTURE.md)**.
+`cleo run` produces a real, print-ready PDF. In production a Claude routine runs the same loop
+on a schedule, and *it* is the Editor — so the taste step needs no API key of its own.
 
 ## The Editor's doctrine
 
-The magic isn't aggregation — it's **subtraction**. The Editor prompt ([`cleo/skill/cleo-editor.md`](cleo/skill/cleo-editor.md)) is non-negotiable about it:
+The magic isn't aggregation — it's **subtraction**. The Editor prompt
+([`cleo/skill/cleo-editor.md`](cleo/skill/cleo-editor.md)) is non-negotiable:
 
-- **1-in-10, or stricter.** Read 200–400 items a day; keep ≤10% as candidates; feature only the strongest ~20.
+- **1-in-10, or stricter.** Read 200–400 items a day; keep ≤10% as candidates; feature only the strongest ~14.
 - **Density, not volume.** Every inch carries an idea, a consequence, or a delight — never "this happened."
 - **Wide angle, always.** Each issue spans ≥4 lenses and features ≥1 piece from outside tech.
 - **Honesty over filling.** A thin day gets a thin issue. Never pad.
 - **Originality, not reproduction.** Quote sparingly, attribute always, link to the source — never replace it.
 
+## Personalize it — features & keys
+
+Two files. **`cleo.toml` is the switchboard; `.env` holds the secrets.** A capability runs only
+if its flag is **on** *and* its key is **present** — so a half-configured feature degrades to off
+instead of crashing or printing a placeholder.
+
+```toml
+# cleo.toml — flip what you want on
+[features]
+dedupe   = true     # dedupe against recent issues (no key)
+weather  = false    # local weather line            (no key)
+images   = false    # line-art illustrations         (GEMINI_API_KEY)
+inbox    = false    # Gmail newsletters              (GMAIL_OAUTH_TOKEN)
+signals  = false    # an X / Twitter list            (X_BEARER_TOKEN)
+email    = false    # email the finished PDF         (RESEND_API_KEY + CLEO_SUBSCRIBERS)
+```
+
+```bash
+cp .env.example .env     # paste keys for only the features you enabled
+cleo doctor              # ● live / ○ on, missing key / ○ off — at a glance
+```
+
+Full walkthrough in **[CONFIG.md](CONFIG.md)**.
+
 ## Sources are MCP servers
 
-Every source is an MCP server — RSS, Gmail, X/Twitter, your calendar, your bank, a cricket feed, or one you write yourself. The default roster (in [`cleo.toml`](cleo.toml)) is a deliberately wide net across six lenses:
+Every source is an MCP server — RSS, Gmail, X, your calendar, the weather, or one you write.
+This repo **ships the supporting servers** a routine needs (under [`servers/`](servers/)):
+
+| Server | Key? | What it feeds |
+|---|---|---|
+| **`rss`** | none | the whole default roster — the keystone |
+| **`weather`** | none | a one-line local forecast (Open-Meteo) |
+| `gmail` · `x` · `calendar` | yes | the reader's own lenses *(scaffolds)* |
+
+The default roster (in [`cleo.toml`](cleo.toml)) is a deliberately wide net across six lenses:
 
 > **Strategy** Stratechery · Platformer · Ben Evans · Not Boring · Exponential View · a16z
 > **Product** Lenny's · SVPG · Mind the Product · **AI/eng** Import AI · One Useful Thing · Simon Willison · Pragmatic Engineer · MIT Tech Review
 > **Wide-angle** Marginal Revolution · Noahpinion · Slow Boring · Astral Codex Ten · Works in Progress · Construction Physics
 > **Wire & curiosity** Hacker News · The Verge · Ars Technica · Quanta · Smithsonian · Aeon
-> **Yours** Gmail newsletters · an X list · your calendar · cricket · weather
+> **Yours** Gmail newsletters · an X list · your calendar · weather
 
-## Quickstart
+## Run it as a Claude routine
 
-```bash
-# 1. configure
-cp .mcp.json.example .mcp.json     # add your MCP servers + secrets
-$EDITOR cleo.toml                  # set persona, sources, theme, schedule
+The engine is built to run unattended. Point a scheduled Claude routine at the Editor skill;
+it calls `cleo ingest`, writes `issue.json` by following the doctrine, then `cleo render` and
+`cleo publish`. See **[routine/README.md](routine/README.md)** for the schedule + the prompt.
 
-# 2. run one issue locally (the routine's loop, by hand)
-#    ingest → edit → render → publish
-cleo run --date today              # (engine CLI — see ARCHITECTURE.md / roadmap)
+## What an edition looks like
 
-# 3. or render an existing issue.json to PDF directly
-#    issue.json + theme → self-contained HTML → headless Chrome → PDF
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
-  --headless --disable-gpu --no-pdf-header-footer \
-  --print-to-pdf=cleo.pdf "file://$PWD/cleo.html"
-
-# 4. schedule it (Claude Code routine, daily)
-#    /schedule  →  run the cleo-editor skill every morning
-```
-
-> **Status:** the **Editor prompt, config, architecture and a fully-worked example issue are complete**. The `cleo` CLI (deterministic ingest/render/publish around the prompt) is the next build — see the roadmap. Today you can run the loop by pointing a Claude Code routine at `cleo/skill/cleo-editor.md`.
-
-## Editions
-
-Published magazines live in **[`editions/`](editions/)** — open **[`cleo-daily-no-01.pdf`](editions/cleo-daily-no-01.pdf)** (Vol. I, No. 1). It was produced by running the doctrine against the live roster, and it's **consumption-ready**: a widget appears *only* if there's real data behind it. With no live weather or cricket feed connected that morning, the Desk leaves their space empty and says so, rather than printing a placeholder. Each edition's self-contained source HTML sits beside its PDF. Twenty pages:
-
-> Cover · The One Thing · The Brief · From Hacker News · Signals · Deep Dive · Evidence · The Conversation · Spotlight · The Long View · Craft · The Stack · The Metric · Science & Wonder · Then · The Long View II · The Margin · Puzzles · The Desk · Colophon
+Each run writes a print-ready PDF to a local `editions/` folder. Below is an interior page from
+Vol. I, No. 1. The issue is *consumption-ready*: a widget appears **only** if there's real data
+behind it — with no live weather feed that morning, the Desk leaves its space empty and says so,
+rather than printing a placeholder.
 
 <div align="center"><img src="assets/preview-interior.png" width="70%" alt="An interior page"></div>
 
@@ -111,25 +145,39 @@ Published magazines live in **[`editions/`](editions/)** — open **[`cleo-daily
 - **Pure white background**, one restrained accent ink — built for ink-tank printers; no wasted toner.
 - **No photographs.** Charts, diagrams and marks are inline SVG line-art.
 - **Landscape, print-first.** A4/Letter landscape, real margins, page-break rules — made to be printed, folded, and read away from a screen.
-- Typeset in Fraunces (display), Source Serif 4 (body), Inter (labels).
+- Typeset in Fraunces (display), Source Serif 4 (body), Inter (labels). The theme lives in [`themes/broadsheet-mono/`](themes/broadsheet-mono/).
 
-## Roadmap
+## Architecture
 
-- [ ] `cleo` CLI: `init · ingest · edit · render · publish · run`
-- [ ] Package the example's design as the first installable **theme** (`themes/broadsheet-mono/`)
-- [ ] Reference MCP servers: `rss` (with feed auto-discovery + a real UA), `gmail`, `x`, `calendar`, `cricket`, `open-meteo`
-- [ ] Dedup against the last N issues (the key daily-cadence filter)
-- [ ] Optional image generation (Gemini), key-gated, single-ink line illustrations only
-- [ ] Print imposition (`--impose`) for saddle-stapled booklets
+```
+cleo/            the engine (deterministic plumbing)
+  config.py        cleo.toml + .env + [features] → resolved Config
+  schema.py        the Item and Issue contracts (pydantic)
+  sources/rss.py   the built-in RSS adapter (shared with the MCP server)
+  ingest.py        pull every source · normalize · dedupe → items.jsonl
+  edit.py          optional local Editor (Anthropic API) — the routine does this in prod
+  render.py        issue.json + theme → HTML → headless Chrome → PDF
+  publish/         file · git · email · web (one function each)
+  cli.py           cleo doctor | init | ingest | edit | render | publish | run
+  skill/           the Editor prompt — the routine's program
+servers/         the supporting MCP servers (rss, weather, …)
+themes/          broadsheet-mono — the first installable theme
+tests/           the stress suite (config, schema, rss, ingest, render edges)
+```
+
+Full design in **[ARCHITECTURE.md](ARCHITECTURE.md)**.
 
 ## Contributing
 
-The four extension points are the contract. To add value you write one of: an **MCP source**, a **theme**, a **section type**, or a **publisher**. Issues and PRs welcome. See [ARCHITECTURE.md](ARCHITECTURE.md) for the shapes.
+Five extension points, each a small, well-defined contract: an **MCP source** (a server in
+`servers/`), a **theme** (a folder in `themes/`), a **section type** (schema + a template), or a
+**publisher** (a function in `cleo/publish/`). Issues and PRs welcome.
 
 ## License
 
-[MIT](LICENSE). The engine is yours; the sources are theirs (Cleo links and attributes, it doesn't republish); the printer is yours.
+[MIT](LICENSE). The engine is yours; the sources are theirs (Cleo links and attributes, it
+doesn't republish); the printer is yours.
 
 ---
 
-<div align="center"><sub>Read hundreds. Keep a tenth. Print twenty. Make them wide.</sub></div>
+<div align="center"><sub>Read hundreds. Keep a tenth. Print on paper. Make them wide.</sub></div>

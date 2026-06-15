@@ -172,6 +172,13 @@ to     = ["env:SUBSCRIBERS"]
 
 Secrets are referenced as `env:NAME`, never inlined. `.mcp.json` (standard Claude Code MCP config) declares *how* to launch/connect each server; `cleo.toml` declares *what to pull* from it.
 
+A `[features]` block at the top is the **switchboard** — one place to enable/disable optional
+capabilities (images, weather, the personal sources, email/web/git publishing, dedupe). The
+binding rule, enforced in `cleo/config.py`: **a feature runs only if its flag is on *and* its
+required key is present** in `.env`. A half-configured feature degrades to off — it never crashes
+a run or prints a placeholder. `cleo doctor` renders the whole switchboard with live/missing
+status. See [CONFIG.md](CONFIG.md).
+
 ---
 
 ## 4. Sources — MCP-server-first adapters
@@ -276,7 +283,11 @@ themes/broadsheet-mono/
   marks.py          # optional: inline-SVG generators (masthead, charts, diagrams)
 ```
 
-The 5 existing designs in `samples/styles/` (standard, signal, atelier, terminal, dispatch) become the first theme library. A theme declares which section types it can render; the Editor is told the active theme's capabilities so it never emits a section the theme can't show.
+`broadsheet-mono` is the first shipped theme — `manifest.toml` (page, fonts, the section types it
+supports, ink defaults), `base.css` (the grid, type scale, `@page`/break rules), and Jinja
+templates (`issue.html.j2` + `sections.html.j2`, one macro per section type). A theme declares
+which section types it can render; the Editor is told the active theme's capabilities so it never
+emits a section the theme can't show, and unknown types degrade to a generic block.
 
 ---
 
@@ -297,25 +308,37 @@ Adding one is a single function + a `[[publish]]` block. Publishing only ever mo
 
 ```
 README.md           # the front door
+CONFIG.md           # personalizing: [features] switchboard + .env keys
 LICENSE             # MIT
 ARCHITECTURE.md     # this document
-cleo.toml           # the publication (persona · sources · theme · publish)
+pyproject.toml      # the cleo package (Python 3.10+)
+cleo.toml           # the publication (features · persona · sources · theme · publish)
 .mcp.json.example   # sample MCP source config (copy → .mcp.json, gitignored)
-cleo/
-  skill/            # the Editor prompt — the routine's program  ← exists today
+.env.example        # secrets, grouped by feature (copy → .env, gitignored)
+cleo/               # the engine — deterministic plumbing
+  config.py         # cleo.toml + .env + [features] → resolved Config
+  schema.py         # the Item and Issue contracts (pydantic)
+  sources/rss.py    # built-in RSS adapter (shared with the rss MCP server)
+  ingest.py         # pull every source over MCP · normalize · dedupe → items.jsonl
+  mcpclient.py      # thin sync MCP client for non-RSS sources
+  edit.py           # optional local Editor (Anthropic API) — a routine does this in prod
+  render.py         # issue.json + theme → HTML → headless Chrome → PDF
+  publish/          # file · git · email · web (one function each)
+  cli.py            # cleo doctor | init | ingest | edit | render | publish | run
+  skill/            # the Editor prompt — the routine's program
     cleo-editor.md
-  cli.py            # `cleo init | ingest | edit | render | publish | run`  (roadmap)
-  ingest.py         # MCP client: pull + normalize → items.jsonl            (roadmap)
-  schema/           # Item, Issue, Theme manifest                           (roadmap)
-  render/           # issue.json + theme → html → pdf (Chrome headless)     (roadmap)
-  publish/          # file · git · email · web                             (roadmap)
-themes/             # broadsheet-mono, … (extracted from the example)       (roadmap)
-editions/           # the published magazines: cleo-daily-no-01.pdf (+ .html source)
-assets/             # preview images used by the README
+servers/            # the supporting MCP servers (rss + weather working; gmail/x/calendar scaffolds)
+themes/             # broadsheet-mono — the first installable theme (manifest + base.css + templates)
+tests/              # the stress suite (config, schema, rss, ingest, render edges)
+routine/            # how to run it as a scheduled Claude routine
+assets/             # preview images + walkthrough video used by the README
+editions/           # the published magazines, written by `file` publish (local-only, gitignored)
 runs/<date>/        # generated each run: items.jsonl, issue.json, pdf (gitignored)
 ```
 
-`pip install cleodaily` → `cleo init` scaffolds `cleo.toml`, `.mcp.json`, a theme, and registers the Editor skill. `cleo run` does one full cycle locally. `/schedule` turns that into the recurring routine.
+`uv pip install -e .` → `cleo init` scaffolds `.env` and `.mcp.json`; `cleo doctor` shows what's
+live. `cleo run` does one full cycle locally (the Editor via the Anthropic API). `/schedule`
+turns it into the recurring routine — where the routine *is* the Editor and no API key is needed.
 
 ---
 

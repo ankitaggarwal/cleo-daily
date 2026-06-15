@@ -10,6 +10,24 @@ cadence   = "daily"                 # cron: 0 6 * * *
 locale    = "en"
 page      = "11in x 8.5in"          # landscape letter
 
+# ─────────────────────────────────────────────────────────────────────────────
+# FEATURES — the switchboard. This is the one place you turn capabilities on/off.
+# A feature runs only if its flag is ON *and* its key is set in .env. Flip a
+# flag here, paste the key in .env, then `cleo doctor` to confirm it's live.
+# (Keyless features — dedupe, weather, cricket, git — just need the flag.)
+# ─────────────────────────────────────────────────────────────────────────────
+[features]
+dedupe   = true     # dedupe against the last N issues — the key daily filter
+weather  = false    # local weather line on the cover (open-meteo, no key)
+images   = false    # generate single-ink line-art illustrations (GEMINI_API_KEY)
+inbox    = false    # Gmail newsletters                          (GMAIL_OAUTH_TOKEN)
+signals  = false    # an X / Twitter list                        (X_BEARER_TOKEN)
+calendar = false    # your week ahead, for the Desk              (GOOGLE_CALENDAR_TOKEN)
+cricket  = false    # scores for the Desk                        (wrap any cricket API)
+git      = false    # commit each edition to the repo
+email    = false    # email the finished PDF             (RESEND_API_KEY + CLEO_SUBSCRIBERS)
+web      = false    # publish to a web target                    (CLEO_WEB_TARGET)
+
 # WHO this is for. The Editor reads this verbatim, on top of the doctrine.
 [persona]
 reader = """

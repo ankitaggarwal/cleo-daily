@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="{{ locale or 'en' }}">
+<head>
+<meta charset="UTF-8">
+<title>{{ m.name }} — {{ m.issue }} — {{ m.dateline }}</title>
+<link href="{{ fonts_href }}" rel="stylesheet">
+<style>{{ base_css }}</style>
+</head>
+<body>
+{% import "sections.html.j2" as S %}
+
+{# page 1: the cover #}
+{{ S.cover(m, counts, contents) }}
+
+{% set sec_titles = {"brief":"The Brief","signals":"Signals","margin":"The Margin","colophon":"Colophon","deep-dive":"Deep Dive"} %}
+{% for s in body_sections %}
+<section class="page">
+  <div class="rhead"><span>{{ m.name }}</span><span class="mid">{{ sec_titles.get(s.type, s.type|replace("-"," ")|title) }}</span><span class="pg">p {{ "%02d"|format(loop.index + 1) }} / {{ total_pages }}</span></div>
+  <div class="pmain">
+    {% if s.type in sec_titles and s.type not in ("deep-dive",) %}
+    <div class="sec-h"><div class="tab"><span class="no">{{ "%02d"|format(loop.index + 1) }}</span>{{ sec_titles[s.type] }}</div><div class="meta">{{ m.issue }}<br>{{ m.dateline }}</div></div>
+    {% endif %}
+    {% if   s.type == "one-thing"  %}{{ S.one_thing(s) }}
+    {% elif s.type == "brief"      %}{{ S.brief(s) }}
+    {% elif s.type == "deep-dive"  %}{{ S.deep_dive(s) }}
+    {% elif s.type == "by-numbers" %}{{ S.by_numbers(s) }}
+    {% elif s.type == "debate"     %}{{ S.debate(s) }}
+    {% elif s.type == "framework"  %}{{ S.framework(s) }}
+    {% elif s.type == "teardown"   %}{{ S.teardown(s) }}
+    {% elif s.type == "signals"    %}{{ S.signals(s) }}
+    {% elif s.type == "margin"     %}{{ S.margin(s) }}
+    {% elif s.type == "colophon"   %}{{ S.colophon(s, m, counts) }}
+    {% else %}{{ S.generic(s) }}{% endif %}
+  </div>
+  <div class="pfoot"><span>{{ m.name }} · {{ m.issue }}</span><span>Read hundreds · keep a tenth · print on paper</span></div>
+</section>
+{% endfor %}
+</body>
+</html>

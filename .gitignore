@@ -4,6 +4,9 @@ __pycache__/
 .venv/
 venv/
 *.egg-info/
+.pytest_cache/
+build/
+dist/
 
 # OS / editor
 .DS_Store
@@ -16,7 +19,9 @@ Thumbs.db
 .mcp.json
 *.key
 
-# Runtime output (issues are generated; the committed one in examples/ is the showcase)
+# Generated editions — kept local, never on git (preview images live in assets/)
+/editions/
+# Runtime output
 /runs/
 /issues/
 # Per-page PNG previews are regenerable from the PDF/HTML
@@ -28,3 +33,9 @@ Thumbs.db
 # Local-only agent instructions (never publish)
 CLAUDE.local.md
 CLAUDE.md
+
+# Local-only notes (video build recipe, etc.) — never publish
+*.local.md
+
+# Local-only video build scripts (never publish)
+.video-build/

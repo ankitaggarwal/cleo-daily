@@ -1,0 +1,176 @@
+{# broadsheet-mono section renderers. One macro per Issue section `type`.
+   Each is fed the section dict `s` and the issue context. Missing fields just
+   don't render — a thin section is honest, not broken. #}
+
+{% macro paras(text) %}{% for p in (text or "").split("\n\n") if p.strip() %}<p>{{ p.strip() }}</p>{% endfor %}{% endmacro %}
+
+{% macro mark() %}<svg class="cov-mark" viewBox="0 0 200 200" fill="none" stroke="#16605A"><g stroke-width="2" opacity="0.9"><line x1="20" y1="30" x2="120" y2="100"/><line x1="14" y1="70" x2="120" y2="100"/><line x1="14" y1="110" x2="120" y2="100"/><line x1="20" y1="150" x2="120" y2="100"/><line x1="40" y1="178" x2="120" y2="100"/><line x1="40" y1="22" x2="120" y2="100"/><line x1="8" y1="90" x2="120" y2="100"/><line x1="30" y1="165" x2="120" y2="100"/></g><circle cx="120" cy="100" r="40" stroke-width="3"/><circle cx="120" cy="100" r="26" stroke-width="2" opacity="0.5"/><circle cx="120" cy="100" r="8" fill="#16605A" stroke="none"/></svg>{% endmacro %}
+
+{# ── COVER ─────────────────────────────────────────────────────────────── #}
+{% macro cover(m, counts, contents) %}
+<section class="page cover">
+  <div>
+    <div class="cov-top">
+      <div class="l">{{ m.subtitle or "A daily field brief" }} · <b>{{ m.issue }}</b></div>
+      <div class="r">{{ m.dateline }}</div>
+    </div>
+    <div class="masthead">{{ (m.name or "Cleo").split(" ")[0] }}</div>
+    <div class="md-daily">{{ (m.name or "Cleo Daily").split(" ")[1] if " " in (m.name or "") else "Daily" }}</div>
+    <div class="cov-tag">{{ m.today }}</div>
+    {{ mark() }}
+  </div>
+  {% if m.weather %}
+  <div class="cov-weather"><div class="wl">The week</div><div class="wt">{{ m.weather }}</div></div>
+  {% endif %}
+  {% if contents %}
+  <div class="cov-index">
+    <div class="ix-h">Inside<span>{{ counts.scanned }} read · {{ counts.kept }} kept · {{ counts.printed }} printed</span></div>
+    <div class="cix-grid">
+      {% for c in contents %}<div class="cix"><div class="f">{{ "%02d"|format(loop.index) }}</div><div class="n">{{ c.headline }}<s>{{ c.kicker or c.type }}</s></div></div>{% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</section>
+{% endmacro %}
+
+{# ── ONE THING ─────────────────────────────────────────────────────────── #}
+{% macro one_thing(s) %}
+<div class="kick">{{ s.kicker or "The One Thing" }}</div>
+<h1 class="ot-head">{{ s.headline }}</h1>
+<div class="ot-dek">{{ s.dek }}</div>
+<div class="ot-grid">
+  <div class="ot-body">{{ paras(s.body) }}</div>
+  <div class="ot-side">
+    {% if s.soWhat %}<div class="ot-so"><div class="l">So what — for you</div><div class="t">{{ s.soWhat }}</div></div>{% endif %}
+    {% if s.pullQuote %}<div class="ot-pq">“{{ s.pullQuote }}”</div>{% endif %}
+    {% if s.source %}<div class="ot-src">Source · <b>{{ s.source }}</b></div>{% endif %}
+  </div>
+</div>
+{% endmacro %}
+
+{# ── BRIEF ─────────────────────────────────────────────────────────────── #}
+{% macro brief(s) %}
+<div class="brief-wrap">
+  {% for it in s["items"] %}
+  <div class="bi">
+    <div class="verdict {{ (it.verdict or '')|lower }}">{{ it.verdict or "—" }}</div>
+    <div><div class="h">{{ it.headline }}</div>{% if it.line %}<div class="s">{{ it.line }}</div>{% endif %}{% if it.source %}<div class="src">{{ it.source }}</div>{% endif %}</div>
+  </div>
+  {% endfor %}
+  {% if s.cut %}<div class="cut"><div class="l">What I cut</div><div class="t">{{ s.cut }}</div></div>{% endif %}
+</div>
+{% endmacro %}
+
+{# ── DEEP DIVE ─────────────────────────────────────────────────────────── #}
+{% macro deep_dive(s) %}
+<h1 class="dd-head">{{ s.headline }}</h1>
+<div class="dd-dek">{{ s.dek }}</div>
+<div class="dd-grid">
+  <div class="dd-body">{{ paras(s.body) }}</div>
+  <div class="dd-side">
+    {% if s.pullQuote %}<div class="pq">“{{ s.pullQuote }}”</div>{% endif %}
+    {% if s.evidence %}<div class="mini-h">Evidence</div>{% for e in s.evidence %}<div class="ev"><b>{{ e.n }}</b><span>{{ e.text }}</span></div>{% endfor %}{% endif %}
+    {% if s.source %}<div class="dd-src">Source · {{ s.source }}</div>{% endif %}
+  </div>
+</div>
+{% endmacro %}
+
+{# ── BY NUMBERS ────────────────────────────────────────────────────────── #}
+{% macro by_numbers(s) %}
+{% set series = (s.chart or {}).get("series", []) %}
+{% set maxv = ((series | map(attribute="value") | map("float") | max) if series else 1) or 1 %}
+<div class="col">
+  <div class="col-h">{{ s.stat }}<span class="k">By the numbers</span></div>
+  {% if s.caption %}<div class="stat-cap">{{ s.caption }}</div>{% endif %}
+  <div class="bars">
+    {% for d in series %}
+    <div class="bar"><div class="bl">{{ d.label }}</div><div class="bt {{ 'flag' if d.flag }}"><i style="width:{{ ((d.value|float)/maxv*100)|round(1) }}%"></i></div><div class="bv">{{ d.value }}</div></div>
+    {% endfor %}
+  </div>
+  {% if s.source %}<div class="chart-note">Source · {{ s.source }}</div>{% endif %}
+</div>
+{% endmacro %}
+
+{# ── DEBATE ────────────────────────────────────────────────────────────── #}
+{% macro debate(s) %}
+<div class="col">
+  <div class="col-h">The Debate<span class="k">Two reads</span></div>
+  <div class="deb-q">{{ s.question }}</div>
+  {% for k in ["sideA", "sideB"] %}{% set side = s[k] %}{% if side %}
+  <div class="side"><div class="tag">{{ "Yes" if k == "sideA" else "No" }}</div><div class="pos">{{ side.pos }}</div><div class="arg">{{ side.arg }}</div>{% if side.who %}<div class="who">{{ side.who }}</div>{% endif %}</div>
+  {% endif %}{% endfor %}
+  {% if s.mid %}<div class="deb-mid">{{ s.mid }}</div>{% endif %}
+</div>
+{% endmacro %}
+
+{# ── FRAMEWORK ─────────────────────────────────────────────────────────── #}
+{% macro framework(s) %}
+<div class="col">
+  <div class="col-h">{{ s.name }}<span class="k">Framework</span></div>
+  {% if s.explain %}<div class="fw-explain">{{ s.explain }}</div>{% endif %}
+  {% if s.diagram and s.diagram.lstrip().startswith("<svg") %}<div class="fw-diagram">{{ s.diagram|safe }}</div>{% endif %}
+  {% if s.applyMonday %}<div class="apply"><div class="l">Apply Monday</div><div class="t">{{ s.applyMonday }}</div></div>{% endif %}
+</div>
+{% endmacro %}
+
+{# ── TEARDOWN ──────────────────────────────────────────────────────────── #}
+{% macro teardown(s) %}
+<div class="col">
+  <div class="col-h">Teardown<span class="k">One product</span></div>
+  <div class="td-sub">{{ s.product }}</div>
+  {% if s.whatsInteresting %}<div class="td-what">{{ s.whatsInteresting }}</div>{% endif %}
+  <div class="wells">{% for w in s.didWell or [] %}<div class="well">{{ w }}</div>{% endfor %}</div>
+  {% if s.steal %}<div class="steal"><div class="l">Steal this</div><div class="t">{{ s.steal }}</div></div>{% endif %}
+</div>
+{% endmacro %}
+
+{# ── SIGNALS ───────────────────────────────────────────────────────────── #}
+{% macro signals(s) %}
+<div class="sig-grid">
+  {% for it in s["items"] %}
+  <div class="sigi"><div class="t">{{ it.quote or it.text }}</div><div class="s">{{ it.who }}{% if it.source %} · {{ it.source }}{% endif %}</div></div>
+  {% endfor %}
+</div>
+{% endmacro %}
+
+{# ── MARGIN ────────────────────────────────────────────────────────────── #}
+{% macro margin(s) %}
+<div class="margin-grid">
+  <div class="mcol">
+    <div class="mh">Wonder</div>
+    {% for w in s.wonder or [] %}<div class="wonder"><div class="h">{{ w.h }}</div><div class="s">{{ w.s }}</div>{% if w.src %}<div class="src">{{ w.src }}</div>{% endif %}</div>{% endfor %}
+  </div>
+  <div class="mcol">
+    {% if s.oneGoodIdea %}<div class="mh">One good idea</div><div class="idea">{{ s.oneGoodIdea }}</div>{% endif %}
+    {% if s.quote %}<div class="quote-box"><div class="q">“{{ s.quote.q }}”</div><div class="by">{{ s.quote.by }}</div></div>{% endif %}
+    {% if s.tinyJoys %}<div class="mh">Tiny joys</div>{% for j in s.tinyJoys %}<div class="joy">{{ j }}</div>{% endfor %}{% endif %}
+  </div>
+  <div class="mcol">
+    {% if s.readNext %}<div class="mh">Read next</div>{% for r in s.readNext %}<div class="rec"><div class="h">{{ r.title or r }}</div>{% if r.why %}<div class="w">{{ r.why }}</div>{% endif %}</div>{% endfor %}{% endif %}
+  </div>
+</div>
+{% endmacro %}
+
+{# ── COLOPHON ──────────────────────────────────────────────────────────── #}
+{% macro colophon(s, m, counts) %}
+<div class="colo">
+  <div>
+    <div class="colo-note drop">{{ s.note }}</div>
+    <div class="colo-sig">Cleo<span>the desk editor · {{ m.name or "Cleo Daily" }}</span></div>
+  </div>
+  <div class="colo-side">
+    <div class="made">
+      <div class="row"><span class="k">Scanned</span><span class="v">{{ counts.scanned }}</span></div>
+      <div class="row"><span class="k">Kept</span><span class="v">{{ counts.kept }}</span></div>
+      <div class="row"><span class="k">Printed</span><span class="v">{{ counts.printed }}</span></div>
+    </div>
+    {% if s.weekAhead %}<div class="mh" style="margin-top:.16in">Week ahead</div>{% for w in s.weekAhead %}<div class="joy">{{ w }}</div>{% endfor %}{% endif %}
+    {% if s.tomorrow %}<div class="next"><div class="l">Tomorrow</div><div class="t">{{ s.tomorrow }}</div></div>{% endif %}
+  </div>
+</div>
+{% endmacro %}
+
+{# ── GENERIC FALLBACK ──────────────────────────────────────────────────── #}
+{% macro generic(s) %}
+<div class="generic"><div class="gx">{{ s | tojson(indent=2) }}</div></div>
+{% endmacro %}

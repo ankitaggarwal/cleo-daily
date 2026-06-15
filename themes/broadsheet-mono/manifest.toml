@@ -1,0 +1,22 @@
+# broadsheet-mono — the first Cleo theme.
+# Calm, dense, white-on-white, one accent ink. Built for an ink-tank printer.
+
+name        = "broadsheet-mono"
+description = "Calm landscape broadsheet: white ground, one ink, line-art only."
+page        = "11in 8.5in"          # landscape letter; also "a4-landscape"
+margin      = "0"                    # the template paints its own margins
+
+# Google fonts pulled at render time (embedded link in the self-contained HTML)
+fonts_href = "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap"
+
+# Section types this theme can render. The Editor is told this list and never
+# emits a type the theme can't show; unknown types degrade to a generic block.
+supports = [
+  "cover", "one-thing", "brief", "deep-dive", "by-numbers",
+  "debate", "framework", "teardown", "signals", "margin", "colophon",
+]
+
+[ink]
+accent     = "#16605A"
+background = "#FFFFFF"
+budget     = "low"
